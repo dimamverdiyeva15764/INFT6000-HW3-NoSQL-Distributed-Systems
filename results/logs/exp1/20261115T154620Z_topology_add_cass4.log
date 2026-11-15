@@ -1,0 +1,151 @@
+## before adding cass4  2026-11-15T15:46:24Z
+Datacenter: dc1
+===============
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address      Load        Tokens  Owns (effective)  Host ID                               Rack 
+UN  172.28.0.11  705.76 KiB  16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  120.06 KiB  16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  120.12 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+
+## +0s  2026-11-15T15:46:27Z
+UN  172.28.0.11  705.76 KiB  16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  120.06 KiB  16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  120.12 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +5s  2026-11-15T15:46:33Z
+UN  172.28.0.11  705.76 KiB  16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  120.06 KiB  16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  120.12 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +11s  2026-11-15T15:46:39Z
+UN  172.28.0.11  705.76 KiB  16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  120.06 KiB  16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  120.12 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +17s  2026-11-15T15:46:44Z
+UN  172.28.0.11  705.76 KiB  16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  718.16 KiB  16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  120.12 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +22s  2026-11-15T15:46:49Z
+UN  172.28.0.11  705.76 KiB  16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  718.16 KiB  16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  120.12 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +27s  2026-11-15T15:46:55Z
+UN  172.28.0.11  705.76 KiB  16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  718.16 KiB  16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  120.12 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +33s  2026-11-15T15:47:00Z
+UN  172.28.0.11  705.76 KiB  16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UJ  172.28.0.14  30.89 KiB   16      ?                 b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  718.16 KiB  16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  120.12 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+Mode: JOINING
+Not sending any streams.
+Read Repair Statistics:
+Attempted: 0
+Mismatch (Blocking): 0
+Mismatch (Background): 0
+Pool Name                    Active   Pending      Completed   Dropped
+Large messages                  n/a         0              0         0
+Small messages                  n/a         0              2         0
+Gossip messages                 n/a         0            105         0
+
+## +39s  2026-11-15T15:47:06Z
+UN  172.28.0.11  705.76 KiB  16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UJ  172.28.0.14  30.89 KiB   16      ?                 b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  718.16 KiB  16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  120.12 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+Mode: JOINING
+Not sending any streams.
+Read Repair Statistics:
+Attempted: 0
+Mismatch (Blocking): 0
+Mismatch (Background): 0
+Pool Name                    Active   Pending      Completed   Dropped
+Large messages                  n/a         0              0         0
+Small messages                  n/a         0              2         0
+Gossip messages                 n/a         0            130         0
+
+## +45s  2026-11-15T15:47:12Z
+UN  172.28.0.11  705.76 KiB  16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UJ  172.28.0.14  30.89 KiB   16      ?                 b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  718.16 KiB  16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  713.51 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+Mode: JOINING
+Not sending any streams.
+Read Repair Statistics:
+Attempted: 0
+Mismatch (Blocking): 0
+Mismatch (Background): 0
+Pool Name                    Active   Pending      Completed   Dropped
+Large messages                  n/a         0              0         0
+Small messages                  n/a         0              2         0
+Gossip messages                 n/a         0            152         0
+
+## +51s  2026-11-15T15:47:18Z
+UN  172.28.0.11  705.76 KiB  16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UJ  172.28.0.14  30.89 KiB   16      ?                 b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  718.16 KiB  16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  713.51 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+Mode: JOINING
+Not sending any streams.
+Read Repair Statistics:
+Attempted: 0
+Mismatch (Blocking): 0
+Mismatch (Background): 0
+Pool Name                    Active   Pending      Completed   Dropped
+Large messages                  n/a         0              0         0
+Small messages                  n/a         0              2         0
+Gossip messages                 n/a         0            173         0
+
+## +56s  2026-11-15T15:47:24Z
+UN  172.28.0.11  705.76 KiB  16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UJ  172.28.0.14  30.89 KiB   16      ?                 b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  718.16 KiB  16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  713.51 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+Mode: JOINING
+Not sending any streams.
+Read Repair Statistics:
+Attempted: 0
+Mismatch (Blocking): 0
+Mismatch (Background): 0
+Pool Name                    Active   Pending      Completed   Dropped
+Large messages                  n/a         0              0         0
+Small messages                  n/a         0              2         0
+Gossip messages                 n/a         0            196         0
+
+## +62s  2026-11-15T15:47:30Z
+UN  172.28.0.11  1.06 MiB    16      74.7%             e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.14  30.89 KiB   16      73.2%             b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  718.16 KiB  16      77.4%             32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  713.51 KiB  16      74.7%             20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## after cass4 joined (before cleanup)  2026-11-15T15:47:30Z
+Datacenter: dc1
+===============
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address      Load        Tokens  Owns (effective)  Host ID                               Rack 
+UN  172.28.0.11  1.06 MiB    16      74.7%             e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.14  30.89 KiB   16      73.2%             b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  718.16 KiB  16      77.4%             32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  713.51 KiB  16      74.7%             20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+
+## after cleanup  2026-11-15T15:47:32Z
+Datacenter: dc1
+===============
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address      Load        Tokens  Owns (effective)  Host ID                               Rack 
+UN  172.28.0.11  847.63 KiB  16      74.7%             e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.14  30.89 KiB   16      73.2%             b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  718.16 KiB  16      77.4%             32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  713.51 KiB  16      74.7%             20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+

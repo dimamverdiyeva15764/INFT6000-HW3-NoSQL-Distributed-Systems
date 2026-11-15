@@ -1,0 +1,106 @@
+name: inft6000-hw3
+
+x-cassandra: &cassandra
+  image: ${CASSANDRA_IMAGE:-cassandra:5.0.8}
+  restart: "no"
+  environment: &cassandra-env
+    CASSANDRA_CLUSTER_NAME: inft6000-g4
+    CASSANDRA_SEEDS: 172.28.0.11,172.28.0.12
+    CASSANDRA_ENDPOINT_SNITCH: GossipingPropertyFileSnitch
+    CASSANDRA_DC: dc1
+    CASSANDRA_RACK: rack1
+    CASSANDRA_NUM_TOKENS: "16"
+    MAX_HEAP_SIZE: 512M
+    HEAP_NEWSIZE: 128M
+  healthcheck:
+    # The native transport only opens after the node has joined the ring,
+    # so a successful CQL query means the node is Up/Normal.
+    test: ["CMD-SHELL", "cqlsh -e 'describe keyspaces' > /dev/null 2>&1"]
+    interval: 15s
+    timeout: 10s
+    retries: 20
+    start_period: 60s
+
+services:
+  cass1:
+    <<: *cassandra
+    container_name: cass1
+    hostname: cass1
+    ports:
+      - "127.0.0.1:9042:9042"
+    networks:
+      cassnet:
+        ipv4_address: 172.28.0.11
+    volumes:
+      - cass1-data:/var/lib/cassandra
+
+  # Nodes start one at a time: concurrent bootstrap of several nodes is unsafe.
+  cass2:
+    <<: *cassandra
+    container_name: cass2
+    hostname: cass2
+    depends_on:
+      cass1:
+        condition: service_healthy
+    networks:
+      cassnet:
+        ipv4_address: 172.28.0.12
+    volumes:
+      - cass2-data:/var/lib/cassandra
+
+  cass3:
+    <<: *cassandra
+    container_name: cass3
+    hostname: cass3
+    depends_on:
+      cass2:
+        condition: service_healthy
+    networks:
+      cassnet:
+        ipv4_address: 172.28.0.13
+    volumes:
+      - cass3-data:/var/lib/cassandra
+
+  cass4:
+    <<: *cassandra
+    container_name: cass4
+    hostname: cass4
+    profiles: ["scale"]
+    depends_on:
+      cass3:
+        condition: service_healthy
+    networks:
+      cassnet:
+        ipv4_address: 172.28.0.14
+    volumes:
+      - cass4-data:/var/lib/cassandra
+
+  # Python runs inside the cluster network so the driver can reach every
+  # node's internal address (not routable from the host on Docker Desktop).
+  client:
+    build: ./client
+    image: inft6000-hw3-client
+    profiles: ["tools"]
+    working_dir: /work
+    volumes:
+      - .:/work
+    environment:
+      CASSANDRA_HOSTS: 172.28.0.11,172.28.0.12,172.28.0.13
+    networks:
+      - cassnet
+
+networks:
+  cassnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+          # Dynamic addresses come from a separate range so a stopped node's
+          # static address can never be taken by another container.
+          ip_range: 172.28.1.0/24
+
+volumes:
+  cass1-data:
+  cass2-data:
+  cass3-data:
+  cass4-data:

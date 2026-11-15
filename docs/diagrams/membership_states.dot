@@ -1,0 +1,24 @@
+digraph membership {
+  graph [rankdir=LR, fontname="Helvetica", fontsize=12, nodesep=0.6, ranksep=0.9, pad=0.3,
+         label="Node states as reported by nodetool status (Status: U/D, State: N/J/L/M)", labelloc=b];
+  node  [fontname="Helvetica", fontsize=11, shape=box, style="rounded,filled", fillcolor="#DCE6F2", color="#2E5597"];
+  edge  [fontname="Helvetica", fontsize=9, color="#5B6B7F"];
+
+  start [shape=point, width=0.15, fillcolor="#1F3864", color="#1F3864"];
+  UJ [label="UJ\nUp / Joining\n(bootstrap: streams owned ranges,\nreceives writes as pending replica)"];
+  UN [label="UN\nUp / Normal\n(serves reads and writes)", fillcolor="#C6E0B4", color="#548235"];
+  DN [label="DN\nDown / Normal\n(phi > phi_convict_threshold;\nhints stored for it)", fillcolor="#F8CBAD", color="#C55A11"];
+  UL [label="UL\nUp / Leaving\n(decommission: streams its\nranges to new owners)"];
+  UM [label="UM\nUp / Moving\n(token move; rare with vnodes)", style="rounded,dashed"];
+  gone [label="removed from ring\n(DECOMMISSIONED)", fillcolor="#F3F4F6", color="#9AA5B1"];
+
+  start -> UJ [label="new non-seed node starts"];
+  start -> UN [label="seed node / existing node restarts", style=dashed];
+  UJ -> UN [label="bootstrap streaming complete"];
+  UN -> DN [label="crash / partition:\nheartbeats stop arriving"];
+  DN -> UN [label="gossip resumes\n(hint replay begins)"];
+  UN -> UL [label="nodetool decommission"];
+  UL -> gone [label="streaming complete"];
+  UN -> UM [label="nodetool move", style=dashed];
+  UM -> UN [style=dashed];
+}

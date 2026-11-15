@@ -1,0 +1,4 @@
+NAME      STATE     STATUS
+cass1     running   Up 10 minutes (healthy)
+cass2     running   Up 8 minutes (healthy)
+cass3     running   Up 7 minutes (healthy)

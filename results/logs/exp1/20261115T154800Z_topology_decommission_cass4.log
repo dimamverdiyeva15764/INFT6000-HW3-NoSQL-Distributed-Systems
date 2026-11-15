@@ -1,0 +1,170 @@
+## before decommission  2026-11-15T15:48:00Z
+Datacenter: dc1
+===============
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address      Load        Tokens  Owns (effective)  Host ID                               Rack 
+UN  172.28.0.11  847.63 KiB  16      74.7%             e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.14  798.25 KiB  16      73.2%             b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  957.33 KiB  16      77.4%             32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  713.51 KiB  16      74.7%             20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+
+## +0s  2026-11-15T15:48:00Z
+UN  172.28.0.11  847.63 KiB  16      74.7%             e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.14  798.25 KiB  16      73.2%             b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  957.33 KiB  16      77.4%             32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  713.51 KiB  16      74.7%             20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +3s  2026-11-15T15:48:03Z
+UN  172.28.0.11  847.63 KiB  16      74.7%             e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UL  172.28.0.14  798.25 KiB  16      73.2%             b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  957.33 KiB  16      77.4%             32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  713.51 KiB  16      74.7%             20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +5s  2026-11-15T15:48:05Z
+UN  172.28.0.11  847.63 KiB  16      74.7%             e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UL  172.28.0.14  798.25 KiB  16      73.2%             b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  957.33 KiB  16      77.4%             32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  713.51 KiB  16      74.7%             20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +8s  2026-11-15T15:48:08Z
+UN  172.28.0.11  847.63 KiB  16      74.7%             e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UL  172.28.0.14  798.25 KiB  16      73.2%             b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  957.33 KiB  16      77.4%             32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      74.7%             20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +10s  2026-11-15T15:48:10Z
+UN  172.28.0.11  847.63 KiB  16      74.7%             e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UL  172.28.0.14  798.25 KiB  16      73.2%             b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  957.33 KiB  16      77.4%             32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      74.7%             20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +13s  2026-11-15T15:48:13Z
+UN  172.28.0.11  847.63 KiB  16      74.7%             e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UL  172.28.0.14  798.25 KiB  16      73.2%             b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  957.33 KiB  16      77.4%             32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      74.7%             20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +15s  2026-11-15T15:48:15Z
+UN  172.28.0.11  847.63 KiB  16      74.7%             e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UL  172.28.0.14  798.25 KiB  16      73.2%             b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  957.33 KiB  16      77.4%             32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      74.7%             20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +17s  2026-11-15T15:48:17Z
+UN  172.28.0.11  847.63 KiB  16      74.7%             e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UL  172.28.0.14  798.25 KiB  16      73.2%             b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  957.33 KiB  16      77.4%             32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      74.7%             20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +20s  2026-11-15T15:48:20Z
+UN  172.28.0.11  847.63 KiB  16      74.7%             e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UL  172.28.0.14  798.25 KiB  16      73.2%             b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  957.33 KiB  16      77.4%             32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      74.7%             20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +22s  2026-11-15T15:48:22Z
+UN  172.28.0.11  847.63 KiB  16      74.7%             e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UL  172.28.0.14  798.25 KiB  16      73.2%             b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  957.33 KiB  16      77.4%             32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      74.7%             20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +25s  2026-11-15T15:48:25Z
+UN  172.28.0.11  847.63 KiB  16      74.7%             e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UL  172.28.0.14  798.25 KiB  16      73.2%             b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  957.33 KiB  16      77.4%             32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      74.7%             20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +27s  2026-11-15T15:48:27Z
+UN  172.28.0.11  847.63 KiB  16      74.7%             e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UL  172.28.0.14  798.25 KiB  16      73.2%             b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  957.33 KiB  16      77.4%             32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      74.7%             20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +30s  2026-11-15T15:48:30Z
+UN  172.28.0.11  847.63 KiB  16      74.7%             e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UL  172.28.0.14  798.25 KiB  16      73.2%             b70065ba-0ed7-404b-9673-a3c833b864c9  rack1
+UN  172.28.0.13  957.33 KiB  16      77.4%             32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      74.7%             20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +32s  2026-11-15T15:48:32Z
+UN  172.28.0.11  1.06 MiB    16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  957.33 KiB  16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +35s  2026-11-15T15:48:35Z
+UN  172.28.0.11  1.06 MiB    16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  957.33 KiB  16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +37s  2026-11-15T15:48:37Z
+UN  172.28.0.11  1.06 MiB    16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  957.33 KiB  16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +40s  2026-11-15T15:48:40Z
+UN  172.28.0.11  1.06 MiB    16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  1.08 MiB    16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +42s  2026-11-15T15:48:42Z
+UN  172.28.0.11  1.06 MiB    16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  1.08 MiB    16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +45s  2026-11-15T15:48:45Z
+UN  172.28.0.11  1.06 MiB    16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  1.08 MiB    16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +47s  2026-11-15T15:48:47Z
+UN  172.28.0.11  1.06 MiB    16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  1.08 MiB    16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +50s  2026-11-15T15:48:50Z
+UN  172.28.0.11  1.06 MiB    16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  1.08 MiB    16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +52s  2026-11-15T15:48:52Z
+UN  172.28.0.11  1.06 MiB    16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  1.08 MiB    16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +55s  2026-11-15T15:48:55Z
+UN  172.28.0.11  1.06 MiB    16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  1.08 MiB    16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +57s  2026-11-15T15:48:57Z
+UN  172.28.0.11  1.06 MiB    16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  1.08 MiB    16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +60s  2026-11-15T15:49:00Z
+UN  172.28.0.11  1.06 MiB    16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  1.08 MiB    16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +62s  2026-11-15T15:49:02Z
+UN  172.28.0.11  1.06 MiB    16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  1.08 MiB    16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## +65s  2026-11-15T15:49:05Z
+UN  172.28.0.11  1.06 MiB    16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  1.08 MiB    16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+
+## after decommission  2026-11-15T15:49:06Z
+Datacenter: dc1
+===============
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address      Load        Tokens  Owns (effective)  Host ID                               Rack 
+UN  172.28.0.11  1.06 MiB    16      100.0%            e26c5fd3-a35e-49e1-aefc-2e2de2737c7b  rack1
+UN  172.28.0.13  1.08 MiB    16      100.0%            32f9495a-4f70-4d3d-98f6-de43e1c492b5  rack1
+UN  172.28.0.12  764.07 KiB  16      100.0%            20d2c92c-03b5-4925-ac4d-9c6ef833b9d1  rack1
+

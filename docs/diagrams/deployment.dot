@@ -1,0 +1,34 @@
+digraph deployment {
+  graph [rankdir=TB, fontname="Helvetica", fontsize=12, nodesep=0.5, ranksep=0.6, pad=0.3];
+  node  [fontname="Helvetica", fontsize=11, shape=box, style="rounded,filled", fillcolor="#FFFFFF", color="#5B6B7F"];
+  edge  [fontname="Helvetica", fontsize=9, color="#5B6B7F"];
+
+  subgraph cluster_host {
+    label="Host (Docker Engine / Docker Desktop)"; style="rounded"; color="#9AA5B1";
+    tools [label="Host scripts\nscripts/*.sh, chaos/*.sh\n(docker exec / docker CLI)", fillcolor="#F3F4F6"];
+
+    subgraph cluster_net {
+      label="bridge network cassnet 172.28.0.0/16  (dynamic range 172.28.1.0/24)"; labelloc=b; style="rounded,dashed"; color="#1F3864";
+      client [label="client container (profile: tools)\npython:3.11 + cassandra-driver\napp/, workload/, chaos/, recovery/, analysis/", fillcolor="#EEF2F8"];
+      subgraph cluster_ring {
+        label="Cassandra 5.0 cluster \"inft6000-g4\"  ·  dc1 / rack1  ·  keyspace chat RF=3"; labelloc=b; style="rounded"; color="#2E5597";
+        c1 [label="cass1  (seed)\n172.28.0.11\n16 vnodes", fillcolor="#DCE6F2"];
+        c2 [label="cass2  (seed)\n172.28.0.12\n16 vnodes", fillcolor="#DCE6F2"];
+        c3 [label="cass3\n172.28.0.13\n16 vnodes", fillcolor="#DCE6F2"];
+        {rank=same; c1; c2; c3;}
+        c4 [label="cass4  (profile: scale)\n172.28.0.14\nadd / decommission", fillcolor="#FFFFFF", style="rounded,dashed"];
+      }
+    }
+  }
+
+  client -> c1 [dir=both];
+  client -> c2 [label="CQL 9042", dir=both];
+  client -> c3 [dir=both];
+  c1 -> c2 [label="gossip +\nreplication\n:7000", dir=both, color="#C55A11"];
+  c2 -> c3 [dir=both, color="#C55A11"];
+  c1 -> c3 [dir=both, color="#C55A11", constraint=false];
+
+  c3 -> c4 [dir=both, style=dashed, color="#C55A11"];
+  tools -> client [style=dotted, label="docker compose run"];
+  tools -> c3 [style=dotted, label="nodetool / cqlsh\n(docker exec)", constraint=false];
+}
