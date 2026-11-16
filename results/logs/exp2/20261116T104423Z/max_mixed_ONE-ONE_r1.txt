@@ -1,0 +1,11 @@
+ Container inft6000-hw3-client-run-96a10d574685 Creating 
+ Container inft6000-hw3-client-run-96a10d574685 Created 
+run_id=exp2-max-ONE-r1-20261116T1116Z mode=mixed write_cl=ONE read_cl=ONE closed-loop threads=32 duration=30s warmup=5s
+
+=== summary: exp=exp2 variant=max mode=mixed write_cl=ONE read_cl=ONE run_id=exp2-max-ONE-r1-20261116T1116Z
+load model:       closed loop (--max), 32 threads, 30.0s measured after 5s warm-up
+operations:       45661 (45661 ok, 0 failed)
+throughput (ok):  1522.0 ops/s
+latency (ok):     p50=2.96ms p95=7.95ms p99=12.41ms mean=3.61ms
+rows per read:    10.0
+csv:              results/raw/exp2/exp2_max_ONE_r1_20261116T1116Z.csv (45661 rows)

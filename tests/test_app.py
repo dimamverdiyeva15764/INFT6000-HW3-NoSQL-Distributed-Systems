@@ -13,7 +13,7 @@ from types import SimpleNamespace
 
 import pytest
 from cassandra import (ConsistencyLevel, OperationTimedOut, ReadFailure, ReadTimeout, Unavailable,
-                       WriteFailure, WriteTimeout)
+                       WriteFailure, WriteTimeout, WriteType)
 from cassandra.cluster import NoHostAvailable
 
 from app import db
@@ -69,18 +69,22 @@ class FakeSession:
 
 
 # --------------------------------------------------------------------------- classify_error
-@pytest.mark.parametrize("exc, expected", [
-    (None, "ok"),
-    (Unavailable("not enough replicas alive"), "unavailable"),
-    (WriteTimeout("write timed out"), "write_timeout"),
-    (ReadTimeout("read timed out"), "read_timeout"),
-    (WriteFailure("write failed"), "write_failure"),
-    (ReadFailure("read failed"), "read_failure"),
-    (NoHostAvailable("no host", {}), "no_host"),
-    (OperationTimedOut(), "client_timeout"),
-    (ValueError("anything else"), "other"),
-])
-def test_classify_error(exc, expected):
+# Exceptions are built inside the test (not at import time), so a constructor detail of
+# the driver can only fail its own case. The real driver requires write_type for writes.
+@pytest.mark.parametrize("make, expected", [
+    (lambda: None, "ok"),
+    (lambda: Unavailable("not enough replicas alive"), "unavailable"),
+    (lambda: WriteTimeout("write timed out", write_type=WriteType.SIMPLE), "write_timeout"),
+    (lambda: ReadTimeout("read timed out"), "read_timeout"),
+    (lambda: WriteFailure("write failed", write_type=WriteType.SIMPLE), "write_failure"),
+    (lambda: ReadFailure("read failed"), "read_failure"),
+    (lambda: NoHostAvailable("no host", {}), "no_host"),
+    (lambda: OperationTimedOut(), "client_timeout"),
+    (lambda: ValueError("anything else"), "other"),
+], ids=["ok", "unavailable", "write_timeout", "read_timeout", "write_failure", "read_failure",
+        "no_host", "client_timeout", "other"])
+def test_classify_error(make, expected):
+    exc = make()
     assert classify_error(exc) == expected
     assert classify_error(exc) in OUTCOMES
 

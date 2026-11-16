@@ -1,0 +1,11 @@
+ Container inft6000-hw3-client-run-b1a1dd4e691b Creating 
+ Container inft6000-hw3-client-run-b1a1dd4e691b Created 
+run_id=exp2-read-ALL-r2-20261116T1059Z mode=read write_cl=ALL read_cl=ALL rate=200 threads=8 duration=60s warmup=10s
+
+=== summary: exp=exp2 variant=read mode=read write_cl=ALL read_cl=ALL run_id=exp2-read-ALL-r2-20261116T1059Z
+load model:       open loop, target 200.0 ops/s, 8 threads, 60.0s measured after 10s warm-up
+operations:       12000 (12000 ok, 0 failed)
+throughput (ok):  200.0 ops/s
+latency (ok):     p50=2.48ms p95=3.21ms p99=3.59ms mean=2.47ms
+rows per read:    10.0
+csv:              results/raw/exp2/exp2_read_ALL_r2_20261116T1059Z.csv (12000 rows)

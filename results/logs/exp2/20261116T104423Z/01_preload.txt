@@ -1,0 +1,8 @@
+ Container inft6000-hw3-client-run-ae5015abe8b1 Creating 
+ Container inft6000-hw3-client-run-ae5015abe8b1 Created 
+preload: 2000/10000 rows written (0 failed)
+preload: 4000/10000 rows written (0 failed)
+preload: 6000/10000 rows written (0 failed)
+preload: 8000/10000 rows written (0 failed)
+preload: 10000/10000 rows written (0 failed)
+preload finished in 2.0s

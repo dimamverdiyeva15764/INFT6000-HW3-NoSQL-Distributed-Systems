@@ -1,0 +1,70 @@
+ Container inft6000-hw3-client-run-bcf982d33d21 Creating 
+ Container inft6000-hw3-client-run-bcf982d33d21 Created 
+run_id=exp1-20261116T104256Z mode=mixed write_cl=QUORUM read_cl=QUORUM rate=200 threads=8 duration=60s warmup=0s
+[   1.0s]    201 ops/s  ok=201   err=0    p50=1.83ms p99=3.42ms
+[   2.0s]    200 ops/s  ok=200   err=0    p50=1.82ms p99=3.55ms
+[   3.0s]    200 ops/s  ok=200   err=0    p50=1.50ms p99=3.15ms
+[   4.0s]    200 ops/s  ok=200   err=0    p50=2.21ms p99=3.70ms
+[   5.0s]    200 ops/s  ok=200   err=0    p50=2.19ms p99=3.63ms
+[   6.0s]    201 ops/s  ok=201   err=0    p50=2.13ms p99=3.65ms
+[   7.0s]    199 ops/s  ok=199   err=0    p50=1.93ms p99=4.24ms
+[   8.0s]    200 ops/s  ok=200   err=0    p50=1.71ms p99=3.39ms
+[   9.0s]    200 ops/s  ok=200   err=0    p50=2.31ms p99=3.70ms
+[  10.0s]    201 ops/s  ok=201   err=0    p50=2.22ms p99=3.95ms
+[  11.0s]    200 ops/s  ok=200   err=0    p50=1.94ms p99=3.73ms
+[  12.0s]    200 ops/s  ok=200   err=0    p50=2.45ms p99=4.30ms
+[  13.0s]    200 ops/s  ok=200   err=0    p50=2.29ms p99=3.74ms
+[  14.0s]    200 ops/s  ok=200   err=0    p50=2.29ms p99=3.79ms
+[  15.0s]    200 ops/s  ok=200   err=0    p50=1.74ms p99=3.39ms
+[  16.0s]    200 ops/s  ok=200   err=0    p50=2.16ms p99=3.54ms
+[  17.0s]    201 ops/s  ok=201   err=0    p50=1.55ms p99=3.55ms
+[  18.0s]    200 ops/s  ok=200   err=0    p50=1.78ms p99=3.53ms
+[  19.0s]    200 ops/s  ok=200   err=0    p50=2.11ms p99=3.84ms
+[  20.0s]    200 ops/s  ok=200   err=0    p50=2.17ms p99=3.68ms
+[  21.0s]    200 ops/s  ok=200   err=0    p50=2.14ms p99=3.56ms
+[  22.0s]    200 ops/s  ok=200   err=0    p50=2.03ms p99=3.48ms
+[  23.0s]    200 ops/s  ok=200   err=0    p50=2.32ms p99=3.74ms
+[  24.0s]    200 ops/s  ok=200   err=0    p50=2.34ms p99=3.79ms
+[  25.0s]    200 ops/s  ok=200   err=0    p50=1.90ms p99=3.55ms
+[  26.0s]    200 ops/s  ok=200   err=0    p50=2.00ms p99=3.62ms
+[  27.0s]    200 ops/s  ok=200   err=0    p50=2.01ms p99=3.76ms
+[  28.0s]    200 ops/s  ok=200   err=0    p50=2.07ms p99=3.64ms
+[  29.0s]    200 ops/s  ok=200   err=0    p50=2.28ms p99=3.71ms
+[  30.0s]    201 ops/s  ok=201   err=0    p50=2.19ms p99=3.59ms
+[  31.0s]    199 ops/s  ok=199   err=0    p50=1.72ms p99=3.39ms
+[  32.0s]    201 ops/s  ok=201   err=0    p50=2.04ms p99=3.39ms
+[  33.0s]    200 ops/s  ok=200   err=0    p50=1.74ms p99=3.64ms
+[  34.0s]    200 ops/s  ok=200   err=0    p50=1.68ms p99=3.31ms
+[  35.0s]    200 ops/s  ok=200   err=0    p50=2.28ms p99=3.70ms
+[  36.0s]    200 ops/s  ok=200   err=0    p50=2.28ms p99=3.63ms
+[  37.0s]    200 ops/s  ok=200   err=0    p50=2.26ms p99=3.80ms
+[  38.0s]    200 ops/s  ok=200   err=0    p50=2.19ms p99=3.58ms
+[  39.0s]    200 ops/s  ok=200   err=0    p50=2.33ms p99=3.61ms
+[  40.0s]    200 ops/s  ok=200   err=0    p50=2.19ms p99=3.51ms
+[  41.0s]    200 ops/s  ok=200   err=0    p50=1.74ms p99=3.29ms
+[  42.0s]    200 ops/s  ok=200   err=0    p50=2.28ms p99=3.69ms
+[  43.0s]    200 ops/s  ok=200   err=0    p50=2.20ms p99=3.96ms
+[  44.0s]    200 ops/s  ok=200   err=0    p50=2.23ms p99=3.63ms
+[  45.0s]    200 ops/s  ok=200   err=0    p50=2.16ms p99=3.57ms
+[  46.0s]    201 ops/s  ok=201   err=0    p50=1.64ms p99=3.38ms
+[  47.0s]    199 ops/s  ok=199   err=0    p50=2.27ms p99=3.66ms
+[  48.0s]    201 ops/s  ok=201   err=0    p50=1.71ms p99=3.40ms
+[  49.0s]    200 ops/s  ok=200   err=0    p50=1.94ms p99=3.70ms
+[  50.0s]    200 ops/s  ok=200   err=0    p50=1.87ms p99=3.70ms
+[  51.0s]    200 ops/s  ok=200   err=0    p50=2.09ms p99=3.66ms
+[  52.0s]    200 ops/s  ok=200   err=0    p50=2.23ms p99=3.70ms
+[  53.0s]    200 ops/s  ok=200   err=0    p50=1.94ms p99=3.51ms
+[  54.0s]    200 ops/s  ok=200   err=0    p50=1.62ms p99=3.29ms
+[  55.0s]    200 ops/s  ok=200   err=0    p50=2.21ms p99=3.48ms
+[  56.0s]    200 ops/s  ok=200   err=0    p50=2.23ms p99=3.51ms
+[  57.0s]    200 ops/s  ok=200   err=0    p50=2.31ms p99=3.67ms
+[  58.0s]    200 ops/s  ok=200   err=0    p50=2.26ms p99=3.77ms
+[  59.0s]    200 ops/s  ok=200   err=0    p50=2.29ms p99=3.98ms
+
+=== summary: exp=exp1 variant=baseline mode=mixed write_cl=QUORUM read_cl=QUORUM run_id=exp1-20261116T104256Z
+load model:       open loop, target 200.0 ops/s, 8 threads, 60.0s measured after 0s warm-up
+operations:       12000 (12000 ok, 0 failed)
+throughput (ok):  200.0 ops/s
+latency (ok):     p50=2.05ms p95=3.26ms p99=3.71ms mean=2.13ms
+rows per read:    10.0
+csv:              results/raw/exp1/exp1_baseline_QUORUM_r1_20261116T1043Z.csv (12000 rows)

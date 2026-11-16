@@ -1,0 +1,10 @@
+ Container inft6000-hw3-client-run-ed8a15226a07 Creating 
+ Container inft6000-hw3-client-run-ed8a15226a07 Created 
+run_id=exp2-write-QUORUM-r3-20261116T1108Z mode=write write_cl=QUORUM read_cl=QUORUM rate=200 threads=8 duration=60s warmup=10s
+
+=== summary: exp=exp2 variant=write mode=write write_cl=QUORUM read_cl=QUORUM run_id=exp2-write-QUORUM-r3-20261116T1108Z
+load model:       open loop, target 200.0 ops/s, 8 threads, 60.0s measured after 10s warm-up
+operations:       12000 (12000 ok, 0 failed)
+throughput (ok):  200.0 ops/s
+latency (ok):     p50=1.89ms p95=2.51ms p99=2.76ms mean=1.85ms
+csv:              results/raw/exp2/exp2_write_QUORUM_r3_20261116T1108Z.csv (12000 rows)

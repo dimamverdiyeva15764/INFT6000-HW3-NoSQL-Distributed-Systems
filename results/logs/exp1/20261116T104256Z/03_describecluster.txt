@@ -1,0 +1,28 @@
+Cluster Information:
+	Name: inft6000-g4
+	Snitch: org.apache.cassandra.locator.GossipingPropertyFileSnitch
+	DynamicEndPointSnitch: enabled
+	Partitioner: org.apache.cassandra.dht.Murmur3Partitioner
+	Schema versions:
+		e3a97bb0-e49a-3706-8f6f-5a13a5db9036: [172.28.0.12, 172.28.0.13, 172.28.0.11]
+
+Stats for all nodes:
+	Live: 3
+	Joining: 0
+	Moving: 0
+	Leaving: 0
+	Unreachable: 0
+
+Data Centers: 
+	dc1 #Nodes: 3 #Down: 0
+
+Database versions:
+	5.0.8: [172.28.0.12:7000, 172.28.0.13:7000, 172.28.0.11:7000]
+
+Keyspaces:
+	system_traces -> Replication class: SimpleStrategy {replication_factor=2}
+	system_distributed -> Replication class: SimpleStrategy {replication_factor=3}
+	system_auth -> Replication class: SimpleStrategy {replication_factor=1}
+	chat -> Replication class: NetworkTopologyStrategy {dc1=3}
+	system_schema -> Replication class: LocalStrategy {}
+	system -> Replication class: LocalStrategy {}
