@@ -1,0 +1,30 @@
+// Person 2: how the application, the workload generator and the results pipeline fit together.
+// Render: dot -Tpng -Gdpi=200 docs/diagrams/workload_dataflow.dot -o docs/diagrams/workload_dataflow.png
+digraph workload {
+  graph [rankdir=LR, fontname="Helvetica", fontsize=11, nodesep=0.35, ranksep=0.5, pad=0.3];
+  node  [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled", fillcolor="#FFFFFF", color="#5B6B7F"];
+  edge  [fontname="Helvetica", fontsize=8.5, color="#5B6B7F"];
+
+  host [label="make exp2\nworkload/consistency_matrix.sh\n(host: loops over mode × CL × rep)", fillcolor="#F3F4F6"];
+
+  subgraph cluster_client {
+    label="client container (python:3.11, cassnet)"; style="rounded,dashed"; color="#1F3864";
+    runner [label="workload/runner.py\nopen loop (--rate) / closed loop (--max)\nwrite · read · mixed · probe", fillcolor="#EEF2F8"];
+    chat   [label="app/chat.py\npost · read · tail · --trace", fillcolor="#EEF2F8"];
+    others [label="chaos/availability_probe.py (P3)\nrecovery/*.py (P4)", fillcolor="#FFFFFF", style="rounded,dashed"];
+    db     [label="app/db.py\nget_session · stmt · classify_error\nTokenAware(DCAware) · no retries · 5 s timeout", fillcolor="#DCE6F2"];
+    log    [label="app/results_log.py\nthread-safe CSV, flush per row", fillcolor="#DCE6F2"];
+    summ   [label="workload/exp2_summary.py\npandas + matplotlib", fillcolor="#EEF2F8"];
+  }
+
+  cluster [label="Cassandra cluster\ncass1 · cass2 · cass3\nkeyspace chat, RF 3", fillcolor="#DCE6F2", color="#2E5597"];
+  raw     [label="results/raw/exp2/*.csv\n(shared CSV schema)", shape=note, fillcolor="#FFF8E7", color="#C55A11"];
+  out     [label="results/summary/exp2_*\nresults/figures/exp2_*.png\ndocs/report/generated/*.tex", shape=note, fillcolor="#EEF5EA", color="#4E7D32"];
+
+  host -> runner [label="docker compose run"];
+  runner -> db; chat -> db; others -> db [style=dashed];
+  db -> cluster [label="CQL 9042\nCL per statement", dir=both, color="#2E5597"];
+  runner -> log [label="one row per op"];
+  log -> raw;
+  raw -> summ -> out;
+}
