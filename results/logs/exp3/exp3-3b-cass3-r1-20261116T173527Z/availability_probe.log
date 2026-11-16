@@ -1,0 +1,6 @@
+ Container inft6000-hw3-client-run-5c340bd87aae Creating 
+ Container inft6000-hw3-client-run-5c340bd87aae Created 
+ONE: 960 successful operations, 0 failed operations
+QUORUM: 562 successful operations, 129 failed operations
+ALL: 306 successful operations, 264 failed operations
+CSV: results/raw/exp3/exp3_availability_ONE-QUORUM-ALL_r1_20261116T1735Z.csv

@@ -130,6 +130,29 @@ make demo-exp2     # live demo: 20 s at ONE, then 20 s at ALL, per-second output
 Output: raw CSVs in `results/raw/exp2/`, run logs in `results/logs/exp2/<stamp>/`,
 tables in `results/summary/exp2_*`, figures in `results/figures/exp2_*.png`.
 
+### Experiments 3 and 5 — Fault injection
+
+The fault scripts use the Compose network label to find the project network (whose
+actual Docker name is prefixed by Compose), preserve each node's static IP when healing,
+and append injection events to `results/logs/chaos_events.csv`. The client traffic and
+availability probe run in separate client containers, so a failed consistency level does
+not stop measurements at the other levels.
+
+```bash
+make exp3 VARIANT=3a REP=1       # one-node SIGKILL during active traffic
+make exp3 VARIANT=3b REP=1       # two nodes killed; QUORUM should fail, ONE may work
+make exp3 VARIANT=3c REP=1       # graceful stop/start vs. SIGKILL/restart
+make exp5 REP=1                  # partition cass3, demonstrate minority/majority behavior, heal
+```
+
+Run each experiment with `REP=1`, `REP=2`, and `REP=3` for the required repetitions.
+Override `NODE`, `DURATION`, `FAULT_AFTER`, and `FAULT_SECONDS` if needed. Run
+`bash chaos/run_exp3.sh --help` or `bash chaos/run_exp5.sh --help` for defaults.
+Exp 3/5 CSVs go to `results/raw/exp3/` and `results/raw/exp5/`; orchestration logs,
+status snapshots, and detection measurements go under `results/logs/exp3/` and
+`results/logs/exp5/`. `chaos/detect_down.py` is host-side and uses only the Python
+standard library. Keep the Docker cluster running while an experiment is in progress.
+
 ## Application and workload generator
 
 All Python talks to Cassandra through `app/db.py` (token-aware routing, no driver
@@ -182,6 +205,7 @@ summary; Ctrl-C stops cleanly and keeps the CSV. Exit status 0 = run completed,
 | A node stays `UJ` or `DN` | `docker logs cassN`; if the cluster state is unclear, `make reset && make up` |
 | Several schema versions in `nodetool describecluster` | Wait 30 s and rerun `make schema` |
 | `NoHostAvailable` when running Python on the host | Run it in the client container (`make shell`) |
+| Bash cannot find Docker while running a script from WSL | Enable Docker Desktop's WSL integration for that distribution, or use a Bash shell with access to the Windows Docker CLI |
 | `ModuleNotFoundError: pandas` (or other module) in the client container | The image predates `client/requirements.txt`: `make client` |
 | Result files owned by root (Linux hosts) | Files written by the client container: `sudo chown -R $USER results docs/report/generated` |
 | `cass4` fails to start after an earlier decommission | `make decommission-node` removes its volume; otherwise `docker volume rm inft6000-hw3_cass4-data` |

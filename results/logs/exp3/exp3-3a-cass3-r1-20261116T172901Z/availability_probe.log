@@ -1,0 +1,6 @@
+ Container inft6000-hw3-client-run-35630950f599 Creating 
+ Container inft6000-hw3-client-run-35630950f599 Created 
+ONE: 960 successful operations, 0 failed operations
+QUORUM: 960 successful operations, 0 failed operations
+ALL: 574 successful operations, 130 failed operations
+CSV: results/raw/exp3/exp3_availability_ONE-QUORUM-ALL_r1_20261116T1729Z.csv

@@ -1,0 +1,6 @@
+ Container inft6000-hw3-client-run-7a98082b267c Creating 
+ Container inft6000-hw3-client-run-7a98082b267c Created 
+ONE: 1438 successful operations, 0 failed operations
+QUORUM: 1438 successful operations, 0 failed operations
+ALL: 756 successful operations, 264 failed operations
+CSV: results/raw/exp3/exp3_availability_ONE-QUORUM-ALL_r2_20261116T1745Z.csv

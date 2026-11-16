@@ -1,0 +1,2 @@
+CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS                   PORTS     NAMES
+0c8251036673   cassandra:5.0.8   "docker-entrypoint.s…"   59 minutes ago   Up 2 minutes (healthy)             cass3

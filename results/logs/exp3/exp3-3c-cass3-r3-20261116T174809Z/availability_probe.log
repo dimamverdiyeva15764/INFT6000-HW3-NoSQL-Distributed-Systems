@@ -1,0 +1,6 @@
+ Container inft6000-hw3-client-run-ef7ba7628e87 Creating 
+ Container inft6000-hw3-client-run-ef7ba7628e87 Created 
+ONE: 1440 successful operations, 0 failed operations
+QUORUM: 1440 successful operations, 0 failed operations
+ALL: 782 successful operations, 259 failed operations
+CSV: results/raw/exp3/exp3_availability_ONE-QUORUM-ALL_r3_20261116T1748Z.csv

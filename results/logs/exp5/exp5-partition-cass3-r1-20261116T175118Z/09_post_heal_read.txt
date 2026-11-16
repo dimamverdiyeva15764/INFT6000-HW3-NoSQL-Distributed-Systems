@@ -1,0 +1,7 @@
+Consistency level set to ALL.
+
+ last_seq | updated_by | write_time
+----------+------------+------------------
+      222 |   majority | 1794851522128405
+
+(1 rows)

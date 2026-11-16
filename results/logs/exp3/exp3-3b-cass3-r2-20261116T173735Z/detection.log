@@ -1,0 +1,8 @@
+cass2 DOWN detected by cass1 after 20.032s
+saved: results/logs/exp3/exp3-3b-cass3-r2-20261116T173735Z/detection_times.csv
+cass3 DOWN detected by cass1 after 19.043s
+saved: results/logs/exp3/exp3-3b-cass3-r2-20261116T173735Z/detection_times.csv
+cass2 UP detected by cass1 after 10.062s
+saved: results/logs/exp3/exp3-3b-cass3-r2-20261116T173735Z/detection_times.csv
+cass3 UP detected by cass1 after 10.070s
+saved: results/logs/exp3/exp3-3b-cass3-r2-20261116T173735Z/detection_times.csv

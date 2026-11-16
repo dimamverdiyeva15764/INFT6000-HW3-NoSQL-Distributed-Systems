@@ -1,0 +1,6 @@
+ Container inft6000-hw3-client-run-c4f622cb82bf Creating 
+ Container inft6000-hw3-client-run-c4f622cb82bf Created 
+ONE: 600 successful operations, 0 failed operations
+QUORUM: 600 successful operations, 0 failed operations
+ALL: 242 successful operations, 109 failed operations
+CSV: results/raw/exp3/exp3_availability_ONE-QUORUM-ALL_r1_20261116T1721Z.csv

@@ -1,0 +1,131 @@
+ Container inft6000-hw3-client-run-014bc8a702a5 Creating 
+ Container inft6000-hw3-client-run-014bc8a702a5 Created 
+run_id=exp3-3b-cass3-r1-20261116T173527Z-load mode=mixed write_cl=QUORUM read_cl=QUORUM rate=50 threads=4 duration=120s warmup=0s
+[   1.0s]     51 ops/s  ok=51    err=0    p50=2.18ms p99=3.84ms
+[   2.0s]     50 ops/s  ok=50    err=0    p50=1.98ms p99=3.32ms
+[   3.0s]     50 ops/s  ok=50    err=0    p50=1.90ms p99=4.26ms
+[   4.0s]     50 ops/s  ok=50    err=0    p50=1.98ms p99=2.56ms
+[   5.0s]     50 ops/s  ok=50    err=0    p50=1.97ms p99=2.49ms
+[   6.0s]     50 ops/s  ok=50    err=0    p50=1.92ms p99=3.10ms
+[   7.0s]     50 ops/s  ok=50    err=0    p50=1.93ms p99=3.10ms
+[   8.0s]     50 ops/s  ok=50    err=0    p50=2.07ms p99=4.19ms
+[   9.0s]     50 ops/s  ok=50    err=0    p50=2.27ms p99=3.52ms
+[  10.0s]     50 ops/s  ok=50    err=0    p50=1.93ms p99=2.64ms
+[  11.0s]     50 ops/s  ok=50    err=0    p50=2.39ms p99=3.70ms
+[  12.0s]     50 ops/s  ok=50    err=0    p50=2.12ms p99=4.44ms
+[  13.0s]     50 ops/s  ok=50    err=0    p50=2.05ms p99=3.38ms
+[  14.0s]     50 ops/s  ok=48    err=2    p50=2.27ms p99=10.74ms  other=2
+[  15.0s]     50 ops/s  ok=50    err=0    p50=2.13ms p99=8.34ms
+[  16.0s]     50 ops/s  ok=50    err=0    p50=4.51ms p99=13.31ms
+[  17.0s]     50 ops/s  ok=50    err=0    p50=4.55ms p99=9.84ms
+[  18.0s]     50 ops/s  ok=50    err=0    p50=6.21ms p99=10.73ms
+[  19.0s]     50 ops/s  ok=50    err=0    p50=3.09ms p99=11.05ms
+[  20.0s]     50 ops/s  ok=50    err=0    p50=2.21ms p99=3.60ms
+[  21.0s]     50 ops/s  ok=50    err=0    p50=2.30ms p99=4.80ms
+[  22.0s]     50 ops/s  ok=50    err=0    p50=2.59ms p99=4.10ms
+[  23.0s]     50 ops/s  ok=50    err=0    p50=2.10ms p99=3.13ms
+[  24.0s]     50 ops/s  ok=50    err=0    p50=2.21ms p99=2.81ms
+[  25.0s]     50 ops/s  ok=50    err=0    p50=2.21ms p99=3.41ms
+[  26.0s]     50 ops/s  ok=50    err=0    p50=2.16ms p99=3.76ms
+[  27.0s]     50 ops/s  ok=50    err=0    p50=2.14ms p99=9.29ms
+[  28.0s]     50 ops/s  ok=50    err=0    p50=2.14ms p99=4.96ms
+[  29.0s]     50 ops/s  ok=50    err=0    p50=2.08ms p99=4.21ms
+[  30.0s]     50 ops/s  ok=50    err=0    p50=2.26ms p99=3.83ms
+[  31.0s]     50 ops/s  ok=50    err=0    p50=2.14ms p99=2.67ms
+[  32.0s]     50 ops/s  ok=50    err=0    p50=2.22ms p99=3.63ms
+[  33.0s]     14 ops/s  ok=13    err=1    p50=2.36ms p99=3.25ms  other=1
+[  34.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  35.0s]      1 ops/s  ok=0     err=1    p50=- p99=-  write_timeout=1
+[  36.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  37.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  38.0s]      3 ops/s  ok=0     err=3    p50=- p99=-  client_timeout=3
+[  39.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  40.0s]      3 ops/s  ok=0     err=3    p50=- p99=-  client_timeout=1 write_timeout=2
+[  41.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  42.0s]      1 ops/s  ok=0     err=1    p50=- p99=-  write_timeout=1
+[  43.0s]      1 ops/s  ok=0     err=1    p50=- p99=-  client_timeout=1
+[  44.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  45.0s]      2 ops/s  ok=0     err=2    p50=- p99=-  client_timeout=2
+[  46.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  47.0s]      2 ops/s  ok=0     err=2    p50=- p99=-  client_timeout=1 write_timeout=1
+[  48.0s]      1 ops/s  ok=0     err=1    p50=- p99=-  client_timeout=1
+[  49.0s]      2 ops/s  ok=0     err=2    p50=- p99=-  write_timeout=2
+[  50.0s]      2 ops/s  ok=0     err=2    p50=- p99=-  client_timeout=1 write_timeout=1
+[  51.0s]      1 ops/s  ok=0     err=1    p50=- p99=-  write_timeout=1
+[  52.0s]    308 ops/s  ok=0     err=308  p50=- p99=-  unavailable=307 write_timeout=1
+[  53.0s]    410 ops/s  ok=0     err=410  p50=- p99=-  unavailable=410
+[  54.0s]    347 ops/s  ok=0     err=347  p50=- p99=-  client_timeout=1 unavailable=346
+[  55.0s]     51 ops/s  ok=0     err=51   p50=- p99=-  client_timeout=1 unavailable=50
+[  56.0s]     51 ops/s  ok=0     err=51   p50=- p99=-  client_timeout=1 unavailable=50
+[  57.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  58.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  59.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  60.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  61.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  62.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  63.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  64.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  65.0s]     51 ops/s  ok=0     err=51   p50=- p99=-  unavailable=51
+[  66.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  67.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  68.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  69.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  70.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  71.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  72.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  73.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  74.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  75.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  76.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  77.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  78.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  79.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  80.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  81.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  82.0s]     50 ops/s  ok=0     err=50   p50=- p99=-  unavailable=50
+[  83.0s]     50 ops/s  ok=47    err=3    p50=3.62ms p99=17.30ms  unavailable=3
+[  84.0s]     50 ops/s  ok=50    err=0    p50=5.45ms p99=9.15ms
+[  85.0s]     50 ops/s  ok=50    err=0    p50=2.75ms p99=7.79ms
+[  86.0s]     50 ops/s  ok=50    err=0    p50=4.74ms p99=10.39ms
+[  87.0s]     50 ops/s  ok=50    err=0    p50=4.82ms p99=13.40ms
+[  88.0s]     50 ops/s  ok=50    err=0    p50=2.77ms p99=7.52ms
+[  89.0s]     50 ops/s  ok=50    err=0    p50=3.17ms p99=9.14ms
+[  90.0s]     50 ops/s  ok=50    err=0    p50=2.60ms p99=5.84ms
+[  91.0s]     50 ops/s  ok=50    err=0    p50=2.51ms p99=6.28ms
+[  92.0s]     50 ops/s  ok=50    err=0    p50=2.51ms p99=5.74ms
+[  93.0s]     50 ops/s  ok=50    err=0    p50=2.92ms p99=18.28ms
+[  94.0s]     50 ops/s  ok=50    err=0    p50=3.48ms p99=9.62ms
+[  95.0s]     50 ops/s  ok=50    err=0    p50=3.64ms p99=7.75ms
+[  96.0s]     50 ops/s  ok=50    err=0    p50=3.05ms p99=10.62ms
+[  97.0s]     50 ops/s  ok=50    err=0    p50=3.63ms p99=6.13ms
+[  98.0s]     50 ops/s  ok=50    err=0    p50=2.85ms p99=11.07ms
+[  99.0s]     50 ops/s  ok=50    err=0    p50=2.97ms p99=5.58ms
+[ 100.0s]     50 ops/s  ok=50    err=0    p50=2.75ms p99=5.52ms
+[ 101.0s]     50 ops/s  ok=50    err=0    p50=2.50ms p99=7.24ms
+[ 102.0s]     50 ops/s  ok=50    err=0    p50=2.55ms p99=4.44ms
+[ 103.0s]     50 ops/s  ok=50    err=0    p50=2.79ms p99=6.69ms
+[ 104.0s]     50 ops/s  ok=50    err=0    p50=2.45ms p99=6.93ms
+[ 105.0s]     50 ops/s  ok=50    err=0    p50=2.76ms p99=28.83ms
+[ 106.0s]     50 ops/s  ok=50    err=0    p50=3.12ms p99=5.74ms
+[ 107.0s]     50 ops/s  ok=50    err=0    p50=2.73ms p99=5.61ms
+[ 108.0s]     50 ops/s  ok=50    err=0    p50=3.16ms p99=7.86ms
+[ 109.0s]     50 ops/s  ok=50    err=0    p50=2.58ms p99=6.85ms
+[ 110.0s]     50 ops/s  ok=50    err=0    p50=2.48ms p99=3.66ms
+[ 111.0s]     50 ops/s  ok=50    err=0    p50=2.50ms p99=5.56ms
+[ 112.0s]     50 ops/s  ok=50    err=0    p50=2.32ms p99=4.44ms
+[ 113.0s]     50 ops/s  ok=50    err=0    p50=2.57ms p99=4.27ms
+[ 114.0s]     50 ops/s  ok=50    err=0    p50=2.42ms p99=4.96ms
+[ 115.0s]     50 ops/s  ok=50    err=0    p50=2.32ms p99=3.51ms
+[ 116.0s]     50 ops/s  ok=50    err=0    p50=2.67ms p99=4.96ms
+[ 117.0s]     50 ops/s  ok=50    err=0    p50=2.34ms p99=3.07ms
+[ 118.0s]     50 ops/s  ok=50    err=0    p50=2.68ms p99=5.27ms
+[ 119.0s]     50 ops/s  ok=50    err=0    p50=2.51ms p99=4.17ms
+
+=== summary: exp=exp3 variant=3b mode=mixed write_cl=QUORUM read_cl=QUORUM run_id=exp3-3b-cass3-r1-20261116T173527Z-load
+load model:       open loop, target 50.0 ops/s, 4 threads, 120.0s measured after 0s warm-up
+operations:       6000 (3507 ok, 2493 failed, client_timeout=13, other=3, unavailable=2467, write_timeout=10)
+throughput (ok):  29.2 ops/s
+latency (ok):     p50=2.42ms p95=6.31ms p99=9.59ms mean=2.98ms
+rows per read:    10.0
+WARNING: 1071 operations started >50 ms late (all threads busy) - raise --threads or lower --rate
+csv:              results/raw/exp3/exp3_3b_QUORUM_r1_20261116T1735Z.csv (6000 rows)

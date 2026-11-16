@@ -1,0 +1,5 @@
+node,action,transition,observer,injected_utc,detected_utc,detection_seconds,log_message
+cass2,kill,down,cass1,2026-11-16T17:35:42Z,2026-11-16T17:36:00.977664548Z,18.978,"INFO  [GossipStage:1] 2026-11-16T17:36:00,977 Gossiper.java:1489 - InetAddress /172.28.0.12:7000 is now DOWN"
+cass3,kill,down,cass1,2026-11-16T17:36:01Z,2026-11-16T17:36:19.988570422Z,18.989,"INFO  [GossipStage:1] 2026-11-16T17:36:19,988 Gossiper.java:1489 - InetAddress /172.28.0.13:7000 is now DOWN"
+cass2,start,up,cass1,2026-11-16T17:36:40Z,2026-11-16T17:36:51.019858010Z,11.020,"INFO  [GossipStage:1] 2026-11-16T17:36:51,019 Gossiper.java:1473 - InetAddress /172.28.0.12:7000 is now UP"
+cass3,start,up,cass1,2026-11-16T17:36:54Z,2026-11-16T17:37:05.020363999Z,11.020,"INFO  [GossipStage:1] 2026-11-16T17:37:05,020 Gossiper.java:1473 - InetAddress /172.28.0.13:7000 is now UP"

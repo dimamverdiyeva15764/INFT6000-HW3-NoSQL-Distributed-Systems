@@ -1,0 +1,43 @@
+ts_utc,action,node,note
+2026-11-16T17:16:56Z,partition,cass3,docker network disconnect inft6000-hw3_cassnet
+2026-11-16T17:17:21Z,heal,cass3,reconnect with static IP 172.28.0.13
+2026-11-16T17:21:22Z,kill,cass3,SIGKILL via docker kill
+2026-11-16T17:21:56Z,start,cass3,docker start
+2026-11-16T17:23:15Z,partition,cass3,docker network disconnect inft6000-hw3_cassnet
+2026-11-16T17:24:12Z,heal,cass3,reconnect with static IP 172.28.0.13
+2026-11-16T17:29:16Z,kill,cass3,SIGKILL via docker kill
+2026-11-16T17:29:55Z,start,cass3,docker start
+2026-11-16T17:31:24Z,kill,cass3,SIGKILL via docker kill
+2026-11-16T17:32:03Z,start,cass3,docker start
+2026-11-16T17:33:33Z,kill,cass3,SIGKILL via docker kill
+2026-11-16T17:34:13Z,start,cass3,docker start
+2026-11-16T17:35:42Z,kill,cass2,SIGKILL via docker kill
+2026-11-16T17:36:01Z,kill,cass3,SIGKILL via docker kill
+2026-11-16T17:36:40Z,start,cass2,docker start
+2026-11-16T17:36:54Z,start,cass3,docker start
+2026-11-16T17:37:50Z,kill,cass2,SIGKILL via docker kill
+2026-11-16T17:38:10Z,kill,cass3,SIGKILL via docker kill
+2026-11-16T17:38:49Z,start,cass2,docker start
+2026-11-16T17:39:04Z,start,cass3,docker start
+2026-11-16T17:39:58Z,kill,cass2,SIGKILL via docker kill
+2026-11-16T17:40:18Z,kill,cass3,SIGKILL via docker kill
+2026-11-16T17:40:57Z,start,cass2,docker start
+2026-11-16T17:41:11Z,start,cass3,docker start
+2026-11-16T17:42:06Z,stop,cass3,graceful docker stop
+2026-11-16T17:42:33Z,start,cass3,docker start
+2026-11-16T17:42:48Z,kill,cass3,SIGKILL via docker kill
+2026-11-16T17:43:27Z,start,cass3,docker start
+2026-11-16T17:45:15Z,stop,cass3,graceful docker stop
+2026-11-16T17:45:42Z,start,cass3,docker start
+2026-11-16T17:45:57Z,kill,cass3,SIGKILL via docker kill
+2026-11-16T17:46:39Z,start,cass3,docker start
+2026-11-16T17:48:24Z,stop,cass3,graceful docker stop
+2026-11-16T17:48:51Z,start,cass3,docker start
+2026-11-16T17:49:06Z,kill,cass3,SIGKILL via docker kill
+2026-11-16T17:49:46Z,start,cass3,docker start
+2026-11-16T17:51:34Z,partition,cass3,docker network disconnect inft6000-hw3_cassnet
+2026-11-16T17:52:32Z,heal,cass3,reconnect with static IP 172.28.0.13
+2026-11-16T17:53:42Z,partition,cass3,docker network disconnect inft6000-hw3_cassnet
+2026-11-16T17:54:40Z,heal,cass3,reconnect with static IP 172.28.0.13
+2026-11-16T17:55:50Z,partition,cass3,docker network disconnect inft6000-hw3_cassnet
+2026-11-16T17:56:47Z,heal,cass3,reconnect with static IP 172.28.0.13

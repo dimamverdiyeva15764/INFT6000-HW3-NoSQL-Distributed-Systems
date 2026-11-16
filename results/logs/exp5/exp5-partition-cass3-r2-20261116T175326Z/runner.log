@@ -1,0 +1,131 @@
+ Container inft6000-hw3-client-run-5792fea33073 Creating 
+ Container inft6000-hw3-client-run-5792fea33073 Created 
+run_id=exp5-partition-cass3-r2-20261116T175326Z-load mode=mixed write_cl=QUORUM read_cl=QUORUM rate=50 threads=4 duration=120s warmup=0s
+[   1.0s]     50 ops/s  ok=50    err=0    p50=1.97ms p99=3.08ms
+[   2.0s]     51 ops/s  ok=51    err=0    p50=2.00ms p99=4.07ms
+[   3.0s]     50 ops/s  ok=50    err=0    p50=2.20ms p99=4.33ms
+[   4.0s]     50 ops/s  ok=50    err=0    p50=2.01ms p99=3.64ms
+[   5.0s]     50 ops/s  ok=50    err=0    p50=1.87ms p99=3.28ms
+[   6.0s]     50 ops/s  ok=50    err=0    p50=1.86ms p99=4.29ms
+[   7.0s]     50 ops/s  ok=50    err=0    p50=1.90ms p99=3.65ms
+[   8.0s]     50 ops/s  ok=50    err=0    p50=2.24ms p99=3.45ms
+[   9.0s]     50 ops/s  ok=50    err=0    p50=1.93ms p99=3.41ms
+[  10.0s]     50 ops/s  ok=50    err=0    p50=2.00ms p99=3.11ms
+[  11.0s]     50 ops/s  ok=50    err=0    p50=2.18ms p99=2.89ms
+[  12.0s]     50 ops/s  ok=50    err=0    p50=2.02ms p99=4.81ms
+[  13.0s]     50 ops/s  ok=50    err=0    p50=2.01ms p99=3.94ms
+[  14.0s]     34 ops/s  ok=34    err=0    p50=2.13ms p99=7.68ms
+[  15.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  16.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  17.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  18.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  19.0s]      8 ops/s  ok=4     err=4    p50=2.09ms p99=4.16ms  client_timeout=4
+[  20.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  21.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  22.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  23.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  24.0s]     11 ops/s  ok=7     err=4    p50=3.47ms p99=5.65ms  client_timeout=4
+[  25.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  26.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  27.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  28.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  29.0s]     10 ops/s  ok=6     err=4    p50=1.92ms p99=2.46ms  client_timeout=4
+[  30.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  31.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  32.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  33.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  34.0s]      9 ops/s  ok=5     err=4    p50=1.88ms p99=2.58ms  client_timeout=4
+[  35.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  36.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  37.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  38.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  39.0s]     18 ops/s  ok=14    err=4    p50=2.21ms p99=3.36ms  client_timeout=4
+[  40.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  41.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  42.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  43.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  44.0s]     12 ops/s  ok=8     err=4    p50=1.49ms p99=3.04ms  client_timeout=4
+[  45.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  46.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  47.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  48.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  49.0s]     21 ops/s  ok=17    err=4    p50=2.36ms p99=3.06ms  client_timeout=4
+[  50.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  51.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  52.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  53.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  54.0s]      6 ops/s  ok=2     err=4    p50=2.00ms p99=2.08ms  client_timeout=4
+[  55.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  56.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  57.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  58.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  59.0s]      9 ops/s  ok=5     err=4    p50=2.01ms p99=2.11ms  client_timeout=4
+[  60.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  61.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  62.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  63.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  64.0s]     10 ops/s  ok=6     err=4    p50=2.27ms p99=3.74ms  client_timeout=4
+[  65.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  66.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  67.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  68.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  69.0s]      7 ops/s  ok=3     err=4    p50=2.78ms p99=3.49ms  client_timeout=4
+[  70.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  71.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  72.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  73.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  74.0s]      8 ops/s  ok=4     err=4    p50=2.33ms p99=2.50ms  client_timeout=4
+[  75.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  76.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  77.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  78.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  79.0s]     12 ops/s  ok=8     err=4    p50=2.02ms p99=2.60ms  client_timeout=4
+[  80.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  81.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  82.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  83.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  84.0s]     10 ops/s  ok=6     err=4    p50=2.07ms p99=2.54ms  client_timeout=4
+[  85.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  86.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  87.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  88.0s]      0 ops/s  ok=0     err=0    p50=- p99=-
+[  89.0s]      6 ops/s  ok=2     err=4    p50=3.31ms p99=4.30ms  client_timeout=4
+[  90.0s]     24 ops/s  ok=20    err=4    p50=3.19ms p99=5.49ms  other=4
+[  91.0s]    865 ops/s  ok=865   err=0    p50=1.77ms p99=3.33ms
+[  92.0s]    778 ops/s  ok=778   err=0    p50=2.01ms p99=4.07ms
+[  93.0s]    707 ops/s  ok=707   err=0    p50=2.35ms p99=4.69ms
+[  94.0s]    801 ops/s  ok=801   err=0    p50=1.97ms p99=4.01ms
+[  95.0s]    735 ops/s  ok=735   err=0    p50=1.81ms p99=3.28ms
+[  96.0s]     50 ops/s  ok=50    err=0    p50=2.06ms p99=2.88ms
+[  97.0s]     50 ops/s  ok=50    err=0    p50=2.11ms p99=2.78ms
+[  98.0s]     50 ops/s  ok=50    err=0    p50=1.78ms p99=4.44ms
+[  99.0s]     50 ops/s  ok=50    err=0    p50=1.89ms p99=2.72ms
+[ 100.0s]     50 ops/s  ok=50    err=0    p50=1.96ms p99=3.06ms
+[ 101.0s]     50 ops/s  ok=50    err=0    p50=1.83ms p99=3.32ms
+[ 102.0s]     50 ops/s  ok=50    err=0    p50=1.88ms p99=4.22ms
+[ 103.0s]     50 ops/s  ok=50    err=0    p50=1.84ms p99=2.73ms
+[ 104.0s]     50 ops/s  ok=50    err=0    p50=2.14ms p99=4.56ms
+[ 105.0s]     50 ops/s  ok=50    err=0    p50=1.93ms p99=3.02ms
+[ 106.0s]     50 ops/s  ok=50    err=0    p50=1.96ms p99=3.17ms
+[ 107.0s]     50 ops/s  ok=50    err=0    p50=2.10ms p99=3.49ms
+[ 108.0s]     50 ops/s  ok=50    err=0    p50=1.97ms p99=2.65ms
+[ 109.0s]     50 ops/s  ok=50    err=0    p50=1.74ms p99=2.42ms
+[ 110.0s]     50 ops/s  ok=50    err=0    p50=1.89ms p99=3.57ms
+[ 111.0s]     50 ops/s  ok=50    err=0    p50=1.89ms p99=3.90ms
+[ 112.0s]     50 ops/s  ok=50    err=0    p50=1.86ms p99=3.41ms
+[ 113.0s]     50 ops/s  ok=50    err=0    p50=1.87ms p99=2.60ms
+[ 114.0s]     50 ops/s  ok=50    err=0    p50=1.84ms p99=2.96ms
+[ 115.0s]     50 ops/s  ok=50    err=0    p50=2.00ms p99=2.96ms
+[ 116.0s]     50 ops/s  ok=50    err=0    p50=1.90ms p99=3.40ms
+[ 117.0s]     50 ops/s  ok=50    err=0    p50=1.96ms p99=3.54ms
+[ 118.0s]     50 ops/s  ok=50    err=0    p50=2.14ms p99=2.97ms
+[ 119.0s]     50 ops/s  ok=50    err=0    p50=1.91ms p99=4.02ms
+
+=== summary: exp=exp5 variant=partition mode=mixed write_cl=QUORUM read_cl=QUORUM run_id=exp5-partition-cass3-r2-20261116T175326Z-load
+load model:       open loop, target 50.0 ops/s, 4 threads, 120.0s measured after 0s warm-up
+operations:       6000 (5936 ok, 64 failed, client_timeout=60, other=4)
+throughput (ok):  49.5 ops/s
+latency (ok):     p50=1.95ms p95=3.14ms p99=4.09ms mean=2.08ms
+rows per read:    10.0
+WARNING: 4052 operations started >50 ms late (all threads busy) - raise --threads or lower --rate
+csv:              results/raw/exp5/exp5_partition_QUORUM_r2_20261116T1753Z.csv (6000 rows)

@@ -1,0 +1,2 @@
+cass1 DOWN detected by cass3 after 19.236s
+saved: results/logs/exp3/failure_detection.csv

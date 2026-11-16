@@ -64,19 +64,26 @@ exp2-quick: client
 exp2-report: client
 	$(RUN) python -m workload.exp2_summary
 
+exp3: client
+	bash chaos/run_exp3.sh $(if $(VARIANT),--variant $(VARIANT),) \
+		$(if $(NODE),--node $(NODE),) $(if $(REP),--rep $(REP),) \
+		$(if $(DURATION),--duration $(DURATION),) \
+		$(if $(FAULT_AFTER),--fault-after $(FAULT_AFTER),) \
+		$(if $(FAULT_SECONDS),--fault-seconds $(FAULT_SECONDS),)
+
+exp5: client
+	bash chaos/run_exp5.sh $(if $(NODE),--node $(NODE),) \
+		$(if $(REP),--rep $(REP),) $(if $(DURATION),--duration $(DURATION),) \
+		$(if $(FAULT_AFTER),--fault-after $(FAULT_AFTER),) \
+		$(if $(FAULT_SECONDS),--fault-seconds $(FAULT_SECONDS),)
+
 # Live demo segment: 20 s at ONE, then 20 s at ALL, with the per-second summary line.
 demo-exp2: client
 	$(RUN) python -m workload.runner --mode mixed --cl ONE --rate 200 --duration 20 --exp demo --variant live
 	$(RUN) python -m workload.runner --mode mixed --cl ALL --rate 200 --duration 20 --exp demo --variant live
 
-exp3:
-	bash chaos/run_exp3.sh
-
 exp4:
 	bash recovery/hints_vs_repair.sh
-
-exp5:
-	bash chaos/run_exp5.sh
 
 exp6:
 	$(RUN) python -m recovery.lwt_demo race --clients 10 --handles 20
