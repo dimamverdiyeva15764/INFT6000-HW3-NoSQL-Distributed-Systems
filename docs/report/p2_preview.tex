@@ -1,0 +1,26 @@
+% Stand-alone preview of Person 2's report sections (NOT the submitted report).
+% Build from docs/report/:  latexmk -pdf -outdir=build p2_preview.tex
+% The final report uses IEEEtran; P3 includes the same section files there (see README_P2.md).
+\documentclass[10pt,twocolumn]{article}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{graphicx,amsmath,url,booktabs}
+\usepackage[hidelinks]{hyperref}
+\graphicspath{{../diagrams/}{../../results/figures/}}
+\title{INFT 6000 HW3 --- Group 4\\\large Preview: Sections 3 and 7.2 (Person 2)}
+\author{}\date{}
+\begin{document}
+\maketitle
+% Stand-in labels for sections written by other members (defined in their files).
+\makeatletter
+\def\ptwostub#1#2{\expandafter\gdef\csname r@#1\endcsname{{#2}{}{}{}{}}}
+\ptwostub{sec:architecture}{2}\ptwostub{sec:antientropy}{4}\ptwostub{sec:consensus}{5}\ptwostub{sec:setup}{7.1}
+\makeatother
+\setcounter{section}{2}
+\input{sec3_consistency}
+\setcounter{section}{6}
+\section{Experimental Results}
+\setcounter{subsection}{1}
+\input{sec7_2_results_exp1_2}
+\bibliographystyle{ieeetr}
+\bibliography{refs_p2}
+\end{document}
