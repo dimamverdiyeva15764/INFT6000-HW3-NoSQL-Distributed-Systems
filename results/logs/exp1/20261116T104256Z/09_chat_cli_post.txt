@@ -1,0 +1,3 @@
+ Container inft6000-hw3-client-run-71c2767da2fd Creating 
+ Container inft6000-hw3-client-run-71c2767da2fd Created 
+posted room=general msg_id=83ea5468-e1aa-11f1-8faf-b289542cc332 cl=QUORUM latency=2.19 ms coordinator=cass1

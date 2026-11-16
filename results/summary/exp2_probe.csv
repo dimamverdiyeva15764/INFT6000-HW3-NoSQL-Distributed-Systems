@@ -1,0 +1,6 @@
+pair,write_cl,read_cl,r_plus_w,overlap,runs,probes,stale,stale_pct,failed_reads,read_p50_ms
+ALL-ONE,ALL,ONE,4,True,3,6000,0,0.0,0,1.688
+ONE-ALL,ONE,ALL,4,True,3,6000,0,0.0,0,2.1165000000000003
+ONE-ONE,ONE,ONE,2,False,3,6000,0,0.0,0,1.7614999999999998
+ONE-QUORUM,ONE,QUORUM,3,False,3,6000,0,0.0,0,2.1185
+QUORUM-QUORUM,QUORUM,QUORUM,4,True,3,6000,0,0.0,0,1.941

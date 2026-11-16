@@ -24,6 +24,7 @@ cd inft6000-hw3-cassandra
 make up        # starts cass1 → cass2 → cass3 and waits until all are Up/Normal (a few minutes on the first start)
 make schema    # creates keyspace chat (RF 3) and tables
 make smoke     # end-to-end check, prints PASS lines
+make test      # unit tests of the Python code (no cluster needed)
 ```
 
 `make status` prints and saves the cluster state, `make down` stops the containers and
@@ -96,7 +97,7 @@ docs/                diagrams, report, presentation, references
 | Command | Experiment |
 |---|---|
 | `make exp1` | Normal operations: ring, replicas, cross-coordinator reads/writes, baseline load |
-| `make exp2` | Consistency tuning: ONE / QUORUM / ALL latency, throughput, freshness |
+| `make exp2` | Consistency tuning: ONE / QUORUM / ALL latency, throughput, freshness (`make exp2-report` for tables/figures) |
 | `make exp3` | Node failure under live traffic |
 | `make exp4` | Recovery: hinted handoff, read repair, anti-entropy repair |
 | `make exp5` | Network partition and last-write-wins reconciliation |
@@ -114,6 +115,57 @@ make add-node PRELOAD=100000     # bootstrap cass4 and record UJ -> UN
 make decommission-node           # decommission cass4 and record UL -> removed
 ```
 
+### Experiment 2 — Consistency tuning
+
+See [experiments/EXP2_consistency_tuning.md](experiments/EXP2_consistency_tuning.md).
+
+```bash
+make test          # unit tests (client image only, no cluster needed)
+make exp2-quick    # ~4-minute dry run of the whole grid
+make exp2          # full grid: 27 fixed-rate runs, 3 saturation runs, 15 probe runs (~40 min)
+make exp2-report   # tables, figures, report numbers from results/raw/exp2/
+make demo-exp2     # live demo: 20 s at ONE, then 20 s at ALL, per-second output
+```
+
+Output: raw CSVs in `results/raw/exp2/`, run logs in `results/logs/exp2/<stamp>/`,
+tables in `results/summary/exp2_*`, figures in `results/figures/exp2_*.png`.
+
+## Application and workload generator
+
+All Python talks to Cassandra through `app/db.py` (token-aware routing, no driver
+retries, 5 s client timeout), so every failure is visible and counted. Interfaces and
+the CSV schema are fixed in [docs/CONTRACTS.md](docs/CONTRACTS.md).
+
+### CassChat CLI (`app/chat.py`)
+
+```bash
+docker compose run --rm client python -m app.chat post --room general --author alice --text "hello" --cl QUORUM
+docker compose run --rm client python -m app.chat read --room general --limit 5 --cl ONE
+docker compose run --rm client python -m app.chat --trace read --room general --cl ALL      # query trace
+docker compose run --rm client python -m app.chat --coordinator cass3 read --room general --cl ONE
+docker compose run --rm client python -m app.chat tail --room general --interval 1 --cl QUORUM
+docker compose run --rm client python -m app.chat hosts                                      # driver's view of nodes
+```
+
+A failed request prints its classified outcome, e.g.
+`FAILED post at ALL: outcome=unavailable (Unavailable)`, and exits with status 1.
+
+### Workload generator (`workload/runner.py`)
+
+| Option | Meaning |
+|---|---|
+| `--mode write\|read\|mixed\|probe` | traffic type; `probe` = write then read back through a different coordinator, logs stale reads |
+| `--cl X` or `--write-cl X --read-cl Y` | consistency levels |
+| `--rate R` / `--max` | open loop at R ops/s (default 200) / closed loop, as fast as possible |
+| `--threads`, `--duration`, `--warmup` | concurrency, measured seconds, unlogged warm-up seconds |
+| `--probes N` | probe mode: stop after N probes |
+| `--rooms`, `--preload N`, `--read-ratio`, `--read-limit`, `--payload` | data shape |
+| `--exp --variant --rep --run-id --out` | labels and CSV path (default follows the naming convention) |
+
+It prints one summary line per second (ops/s, ok, errors by type, p50/p99) and a final
+summary; Ctrl-C stops cleanly and keeps the CSV. Exit status 0 = run completed,
+2 = could not connect / bad arguments, 3 = no operation succeeded.
+
 ## Results conventions
 
 - Raw data: `results/raw/expN/<exp>_<variant>_<cl>_r<rep>_<YYYYmmddTHHMMZ>.csv`
@@ -130,4 +182,6 @@ make decommission-node           # decommission cass4 and record UL -> removed
 | A node stays `UJ` or `DN` | `docker logs cassN`; if the cluster state is unclear, `make reset && make up` |
 | Several schema versions in `nodetool describecluster` | Wait 30 s and rerun `make schema` |
 | `NoHostAvailable` when running Python on the host | Run it in the client container (`make shell`) |
+| `ModuleNotFoundError: pandas` (or other module) in the client container | The image predates `client/requirements.txt`: `make client` |
+| Result files owned by root (Linux hosts) | Files written by the client container: `sudo chown -R $USER results docs/report/generated` |
 | `cass4` fails to start after an earlier decommission | `make decommission-node` removes its volume; otherwise `docker volume rm inft6000-hw3_cass4-data` |

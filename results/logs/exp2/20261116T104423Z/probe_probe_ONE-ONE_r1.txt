@@ -1,0 +1,11 @@
+ Container inft6000-hw3-client-run-6299f46dfec2 Creating 
+ Container inft6000-hw3-client-run-6299f46dfec2 Created 
+run_id=exp2-probe-ONE-ONE-r1-20261116T1118Z mode=probe write_cl=ONE read_cl=ONE closed-loop threads=4 duration=0s warmup=0s probes=2000
+
+=== summary: exp=exp2 variant=probe mode=probe write_cl=ONE read_cl=ONE run_id=exp2-probe-ONE-ONE-r1-20261116T1118Z
+load model:       closed loop (--max), 4 threads, 2.3s measured after 0s warm-up
+operations:       4000 (4000 ok, 0 failed)
+throughput (ok):  1739.4 ops/s
+latency (ok):     p50=1.74ms p95=2.82ms p99=3.50ms mean=1.82ms
+stale reads:      0 of 2000 probes (0.00%)
+csv:              results/raw/exp2/exp2_probe_ONE-ONE_r1_20261116T1118Z.csv (4000 rows)

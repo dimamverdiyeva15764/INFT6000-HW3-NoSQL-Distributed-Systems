@@ -1,0 +1,33 @@
+ Container inft6000-hw3-client-run-0cabcfb10826 Creating 
+ Container inft6000-hw3-client-run-0cabcfb10826 Created 
+room=general cl=ONE rows=2 latency=22.20 ms coordinator=cass1
+  2026-11-16 10:43:09.905  exp1         posted through the chat CLI at 2026-11-16T10:43:08Z
+  2026-11-16 10:43:04.389  exp1         hello from cass1 at 2026-11-16T10:43:03Z
+
+--- query trace 84ab8840-e1aa-11f1-8e2f-17a1b80f7db3 ---
+request:     Execute CQL3 prepared query
+coordinator: cass1 (172.28.0.11)
+duration:    18565 us
+elapsed_us  node    activity
+     12048  cass1   speculating read retry on Full(/172.28.0.13:7000,(6103702931238419143,6547271919325108170])
+     12076  cass1   Executing single-partition query on messages
+     12202  cass1   Acquiring sstable references
+     12297  cass1   Skipped 0/0 non-slice-intersecting sstables, included 0 due to tombstones
+     12501  cass1   Sending READ_REQ message to /172.28.0.13:7000 message size 123 bytes
+     12795  cass1   Merged data from memtables and 0 sstables
+        23  cass3   READ_REQ message received from /172.28.0.11:7000
+     13007  cass1   Read 2 live rows and 0 tombstone cells
+       303  cass3   Executing single-partition query on messages
+       429  cass3   Acquiring sstable references
+       584  cass3   Skipped 0/0 non-slice-intersecting sstables, included 0 due to tombstones
+       819  cass3   Merged data from memtables and 0 sstables
+       937  cass3   Read 2 live rows and 0 tombstone cells
+      1008  cass3   Enqueuing response to /172.28.0.11:7000
+      1287  cass3   Sending READ_RSP message to /172.28.0.11:7000 message size 213 bytes
+     16754  cass1   READ_RSP message received from /172.28.0.13:7000
+     17175  cass1   Processing response from /172.28.0.13:7000
+--- summary ---
+nodes involved:      cass1, cass3
+digest mismatch:     no
+read repair:         no
+speculative retry:   yes

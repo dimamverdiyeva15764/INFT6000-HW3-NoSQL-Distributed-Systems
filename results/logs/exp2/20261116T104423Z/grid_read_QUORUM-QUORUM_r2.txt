@@ -1,0 +1,11 @@
+ Container inft6000-hw3-client-run-d2d0d5082ee7 Creating 
+ Container inft6000-hw3-client-run-d2d0d5082ee7 Created 
+run_id=exp2-read-QUORUM-r2-20261116T1058Z mode=read write_cl=QUORUM read_cl=QUORUM rate=200 threads=8 duration=60s warmup=10s
+
+=== summary: exp=exp2 variant=read mode=read write_cl=QUORUM read_cl=QUORUM run_id=exp2-read-QUORUM-r2-20261116T1058Z
+load model:       open loop, target 200.0 ops/s, 8 threads, 60.0s measured after 10s warm-up
+operations:       12000 (12000 ok, 0 failed)
+throughput (ok):  200.0 ops/s
+latency (ok):     p50=2.45ms p95=3.17ms p99=3.55ms mean=2.43ms
+rows per read:    10.0
+csv:              results/raw/exp2/exp2_read_QUORUM_r2_20261116T1058Z.csv (12000 rows)

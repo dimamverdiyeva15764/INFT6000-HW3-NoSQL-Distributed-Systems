@@ -1,1 +1,7 @@
-cassandra-driver==3.29.3
+# Python dependencies of the client container (owner: Person 2). Pinned for reproducibility;
+# all have wheels for Python 3.11 on linux/amd64 and linux/arm64 (Apple Silicon).
+cassandra-driver==3.29.3   # data-access layer (app/db.py)
+numpy==2.1.3               # pandas/matplotlib dependency, pinned for identical results
+pandas==2.2.3              # Exp 2 summary tables (workload/exp2_summary.py), analysis/
+matplotlib==3.9.2          # figures (results/figures/)
+pytest==8.3.3              # unit tests (tests/)

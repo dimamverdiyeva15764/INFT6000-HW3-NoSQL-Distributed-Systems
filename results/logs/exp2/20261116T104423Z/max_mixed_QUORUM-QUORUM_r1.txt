@@ -1,0 +1,11 @@
+ Container inft6000-hw3-client-run-7263629c42f3 Creating 
+ Container inft6000-hw3-client-run-7263629c42f3 Created 
+run_id=exp2-max-QUORUM-r1-20261116T1117Z mode=mixed write_cl=QUORUM read_cl=QUORUM closed-loop threads=32 duration=30s warmup=5s
+
+=== summary: exp=exp2 variant=max mode=mixed write_cl=QUORUM read_cl=QUORUM run_id=exp2-max-QUORUM-r1-20261116T1117Z
+load model:       closed loop (--max), 32 threads, 30.0s measured after 5s warm-up
+operations:       42731 (42731 ok, 0 failed)
+throughput (ok):  1424.4 ops/s
+latency (ok):     p50=3.47ms p95=7.78ms p99=12.15ms mean=4.00ms
+rows per read:    10.0
+csv:              results/raw/exp2/exp2_max_QUORUM_r1_20261116T1117Z.csv (42731 rows)
