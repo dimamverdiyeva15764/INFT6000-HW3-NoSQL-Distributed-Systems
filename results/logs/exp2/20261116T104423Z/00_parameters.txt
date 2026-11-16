@@ -1,0 +1,15 @@
+exp2 run 20261116T104423Z started 2026-11-16T10:44:23Z
+RATE=200 THREADS=8 DURATION=60 WARMUP=10 REPS=3 PRELOAD=10000
+MAX_THREADS=32 MAX_DURATION=30 PROBES=2000 PROBE_THREADS=4
+
+docker 29.9.3
+
+Datacenter: dc1
+===============
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address      Load        Tokens  Owns (effective)  Host ID                               Rack 
+UN  172.28.0.11  118.43 KiB  16      100.0%            3fc0ec5f-77b6-497a-abb6-cc559df7a27d  rack1
+UN  172.28.0.13  115.01 KiB  16      100.0%            491a161d-2d3d-47f4-98cd-e7fb9eb59ff8  rack1
+UN  172.28.0.12  120.12 KiB  16      100.0%            0c40129e-7a34-4435-a88e-24a3545b8c13  rack1
+

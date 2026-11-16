@@ -1,0 +1,11 @@
+ Container inft6000-hw3-client-run-ac27a41d920d Creating 
+ Container inft6000-hw3-client-run-ac27a41d920d Created 
+run_id=exp2-mixed-ONE-r2-20261116T1104Z mode=mixed write_cl=ONE read_cl=ONE rate=200 threads=8 duration=60s warmup=10s
+
+=== summary: exp=exp2 variant=mixed mode=mixed write_cl=ONE read_cl=ONE run_id=exp2-mixed-ONE-r2-20261116T1104Z
+load model:       open loop, target 200.0 ops/s, 8 threads, 60.0s measured after 10s warm-up
+operations:       12000 (12000 ok, 0 failed)
+throughput (ok):  200.0 ops/s
+latency (ok):     p50=1.73ms p95=2.71ms p99=3.10ms mean=1.75ms
+rows per read:    10.0
+csv:              results/raw/exp2/exp2_mixed_ONE_r2_20261116T1104Z.csv (12000 rows)

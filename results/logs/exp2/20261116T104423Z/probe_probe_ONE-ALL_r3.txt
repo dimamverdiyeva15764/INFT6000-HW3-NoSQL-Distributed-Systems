@@ -1,0 +1,11 @@
+ Container inft6000-hw3-client-run-084e8234b8b4 Creating 
+ Container inft6000-hw3-client-run-084e8234b8b4 Created 
+run_id=exp2-probe-ONE-ALL-r3-20261116T1119Z mode=probe write_cl=ONE read_cl=ALL closed-loop threads=4 duration=0s warmup=0s probes=2000
+
+=== summary: exp=exp2 variant=probe mode=probe write_cl=ONE read_cl=ALL run_id=exp2-probe-ONE-ALL-r3-20261116T1119Z
+load model:       closed loop (--max), 4 threads, 2.4s measured after 0s warm-up
+operations:       4000 (4000 ok, 0 failed)
+throughput (ok):  1681.6 ops/s
+latency (ok):     p50=1.88ms p95=2.90ms p99=3.42ms mean=1.92ms
+stale reads:      0 of 2000 probes (0.00%)
+csv:              results/raw/exp2/exp2_probe_ONE-ALL_r3_20261116T1119Z.csv (4000 rows)

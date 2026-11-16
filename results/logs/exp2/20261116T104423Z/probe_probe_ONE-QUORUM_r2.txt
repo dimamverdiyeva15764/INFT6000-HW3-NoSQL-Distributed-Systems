@@ -1,0 +1,11 @@
+ Container inft6000-hw3-client-run-643c413e14c1 Creating 
+ Container inft6000-hw3-client-run-643c413e14c1 Created 
+run_id=exp2-probe-ONE-QUORUM-r2-20261116T1118Z mode=probe write_cl=ONE read_cl=QUORUM closed-loop threads=4 duration=0s warmup=0s probes=2000
+
+=== summary: exp=exp2 variant=probe mode=probe write_cl=ONE read_cl=QUORUM run_id=exp2-probe-ONE-QUORUM-r2-20261116T1118Z
+load model:       closed loop (--max), 4 threads, 2.4s measured after 0s warm-up
+operations:       4000 (4000 ok, 0 failed)
+throughput (ok):  1667.2 ops/s
+latency (ok):     p50=1.91ms p95=3.02ms p99=3.67ms mean=1.97ms
+stale reads:      0 of 2000 probes (0.00%)
+csv:              results/raw/exp2/exp2_probe_ONE-QUORUM_r2_20261116T1118Z.csv (4000 rows)
