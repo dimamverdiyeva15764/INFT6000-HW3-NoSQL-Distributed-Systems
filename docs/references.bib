@@ -1,0 +1,306 @@
+% Group 4 bibliography (IEEE style via IEEEtran.bst / ieeetr). Maintained by Habib Hasanov.
+% Everyone adds entries by small PR; keys must stay unique. Includes Person 2's refs_p2.bib
+% unchanged (first block), then the entries for sections 4, 5 and 7.4.
+
+
+@article{lakshman2010cassandra,
+  author  = {Lakshman, Avinash and Malik, Prashant},
+  title   = {Cassandra: A Decentralized Structured Storage System},
+  journal = {ACM SIGOPS Operating Systems Review},
+  volume  = {44},
+  number  = {2},
+  pages   = {35--40},
+  year    = {2010},
+  doi     = {10.1145/1773912.1773922}
+}
+
+@inproceedings{decandia2007dynamo,
+  author    = {DeCandia, Giuseppe and Hastorun, Deniz and Jampani, Madan and Kakulapati, Gunavardhan and Lakshman, Avinash and Pilchin, Alex and Sivasubramanian, Swaminathan and Vosshall, Peter and Vogels, Werner},
+  title     = {Dynamo: Amazon's Highly Available Key-value Store},
+  booktitle = {Proc. 21st ACM Symposium on Operating Systems Principles (SOSP)},
+  pages     = {205--220},
+  year      = {2007},
+  doi       = {10.1145/1294261.1294281}
+}
+
+@inproceedings{gifford1979weighted,
+  author    = {Gifford, David K.},
+  title     = {Weighted Voting for Replicated Data},
+  booktitle = {Proc. 7th ACM Symposium on Operating Systems Principles (SOSP)},
+  pages     = {150--162},
+  year      = {1979},
+  doi       = {10.1145/800215.806583}
+}
+
+@article{bailis2012pbs,
+  author  = {Bailis, Peter and Venkataraman, Shivaram and Franklin, Michael J. and Hellerstein, Joseph M. and Stoica, Ion},
+  title   = {Probabilistically Bounded Staleness for Practical Partial Quorums},
+  journal = {Proceedings of the VLDB Endowment},
+  volume  = {5},
+  number  = {8},
+  pages   = {776--787},
+  year    = {2012},
+  doi     = {10.14778/2212351.2212359}
+}
+
+@article{abadi2012pacelc,
+  author  = {Abadi, Daniel},
+  title   = {Consistency Tradeoffs in Modern Distributed Database System Design: {CAP} Is Only Part of the Story},
+  journal = {Computer},
+  volume  = {45},
+  number  = {2},
+  pages   = {37--42},
+  year    = {2012},
+  doi     = {10.1109/MC.2012.33}
+}
+
+@article{vogels2009eventually,
+  author  = {Vogels, Werner},
+  title   = {Eventually Consistent},
+  journal = {Communications of the ACM},
+  volume  = {52},
+  number  = {1},
+  pages   = {40--44},
+  year    = {2009},
+  doi     = {10.1145/1435417.1435432}
+}
+
+@article{herlihy1990linearizability,
+  author  = {Herlihy, Maurice P. and Wing, Jeannette M.},
+  title   = {Linearizability: A Correctness Condition for Concurrent Objects},
+  journal = {ACM Transactions on Programming Languages and Systems},
+  volume  = {12},
+  number  = {3},
+  pages   = {463--492},
+  year    = {1990},
+  doi     = {10.1145/78969.78972}
+}
+
+@inproceedings{terry1994session,
+  author    = {Terry, Douglas B. and Demers, Alan J. and Petersen, Karin and Spreitzer, Mike J. and Theimer, Marvin M. and Welch, Brent B.},
+  title     = {Session Guarantees for Weakly Consistent Replicated Data},
+  booktitle = {Proc. 3rd International Conference on Parallel and Distributed Information Systems (PDIS)},
+  pages     = {140--149},
+  year      = {1994},
+  doi       = {10.1109/PDIS.1994.331722}
+}
+
+@misc{cassdoc-dynamo,
+  author       = {{The Apache Software Foundation}},
+  title        = {Apache {Cassandra} 4.0 Documentation: Dynamo (Tunable Consistency)},
+  howpublished = {\url{https://cassandra.apache.org/doc/4.0/cassandra/architecture/dynamo.html}},
+  note         = {Accessed Nov. 2026}
+}
+
+@misc{cassdoc-readrepair,
+  author       = {{The Apache Software Foundation}},
+  title        = {Apache {Cassandra} 4.0 Documentation: Read Repair},
+  howpublished = {\url{https://cassandra.apache.org/doc/4.0/cassandra/operating/read_repair.html}},
+  note         = {Accessed Nov. 2026}
+}
+
+@misc{cassdoc-hints,
+  author       = {{The Apache Software Foundation}},
+  title        = {Apache {Cassandra} 4.0 Documentation: Hints},
+  howpublished = {\url{https://cassandra.apache.org/doc/4.0/cassandra/operating/hints.html}},
+  note         = {Accessed Nov. 2026}
+}
+
+@misc{cassdoc-storage,
+  author       = {{The Apache Software Foundation}},
+  title        = {Apache {Cassandra} 4.0 Documentation: Storage Engine},
+  howpublished = {\url{https://cassandra.apache.org/doc/4.0/cassandra/architecture/storage_engine.html}},
+  note         = {Accessed Nov. 2026}
+}
+
+@misc{cass14635,
+  author       = {{The Apache Software Foundation}},
+  title        = {{CASSANDRA-14635}: Support Table Level Configuration of Monotonic Reads},
+  howpublished = {\url{https://issues.apache.org/jira/browse/CASSANDRA-14635}},
+  note         = {Fixed in 4.0}
+}
+
+@misc{pydriver,
+  author       = {{DataStax}},
+  title        = {{DataStax Python Driver for Apache Cassandra} 3.29 Documentation: Getting Started, Execution Profiles},
+  howpublished = {\url{https://docs.datastax.com/en/developer/python-driver/3.29/getting_started/}},
+  note         = {Accessed Nov. 2026}
+}
+
+% ---------------------------------------------------------------- sections 4, 5, 7.4 (Habib Hasanov)
+@article{lamport1998parttime,
+  author  = {Lamport, Leslie},
+  title   = {The Part-Time Parliament},
+  journal = {ACM Transactions on Computer Systems},
+  volume  = {16},
+  number  = {2},
+  pages   = {133--169},
+  year    = {1998},
+  doi     = {10.1145/279227.279229}
+}
+
+@article{lamport2001simple,
+  author  = {Lamport, Leslie},
+  title   = {Paxos Made Simple},
+  journal = {ACM SIGACT News},
+  volume  = {32},
+  number  = {4},
+  pages   = {51--58},
+  year    = {2001},
+  doi     = {10.1145/568425.568433}
+}
+
+@inproceedings{chandra2007live,
+  author    = {Chandra, Tushar D. and Griesemer, Robert and Redstone, Joshua},
+  title     = {Paxos Made Live: An Engineering Perspective},
+  booktitle = {Proc. 26th ACM Symposium on Principles of Distributed Computing (PODC)},
+  pages     = {398--407},
+  year      = {2007},
+  doi       = {10.1145/1281100.1281103}
+}
+
+@inproceedings{ongaro2014raft,
+  author    = {Ongaro, Diego and Ousterhout, John},
+  title     = {In Search of an Understandable Consensus Algorithm},
+  booktitle = {Proc. USENIX Annual Technical Conference (ATC)},
+  pages     = {305--319},
+  year      = {2014}
+}
+
+@article{lamport1978time,
+  author  = {Lamport, Leslie},
+  title   = {Time, Clocks, and the Ordering of Events in a Distributed System},
+  journal = {Communications of the ACM},
+  volume  = {21},
+  number  = {7},
+  pages   = {558--565},
+  year    = {1978},
+  doi     = {10.1145/359545.359563}
+}
+
+@inproceedings{mattern1989vector,
+  author    = {Mattern, Friedemann},
+  title     = {Virtual Time and Global States of Distributed Systems},
+  booktitle = {Parallel and Distributed Algorithms},
+  publisher = {North-Holland},
+  pages     = {215--226},
+  year      = {1989}
+}
+
+@inproceedings{merkle1987,
+  author    = {Merkle, Ralph C.},
+  title     = {A Digital Signature Based on a Conventional Encryption Function},
+  booktitle = {Advances in Cryptology -- CRYPTO '87},
+  series    = {LNCS},
+  volume    = {293},
+  pages     = {369--378},
+  publisher = {Springer},
+  year      = {1988},
+  doi       = {10.1007/3-540-48184-2_32}
+}
+
+@inproceedings{demers1987epidemic,
+  author    = {Demers, Alan and Greene, Dan and Hauser, Carl and Irish, Wes and Larson, John and Shenker, Scott and Sturgis, Howard and Swinehart, Dan and Terry, Doug},
+  title     = {Epidemic Algorithms for Replicated Database Maintenance},
+  booktitle = {Proc. 6th ACM Symposium on Principles of Distributed Computing (PODC)},
+  pages     = {1--12},
+  year      = {1987},
+  doi       = {10.1145/41840.41841}
+}
+
+@inproceedings{hayashibara2004phi,
+  author    = {Hayashibara, Naohiro and D{\'e}fago, Xavier and Yared, Rami and Katayama, Takuya},
+  title     = {The $\varphi$ Accrual Failure Detector},
+  booktitle = {Proc. 23rd IEEE International Symposium on Reliable Distributed Systems (SRDS)},
+  pages     = {66--78},
+  year      = {2004},
+  doi       = {10.1109/RELDIS.2004.1353004}
+}
+
+@article{gilbert2002cap,
+  author  = {Gilbert, Seth and Lynch, Nancy},
+  title   = {Brewer's Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services},
+  journal = {ACM SIGACT News},
+  volume  = {33},
+  number  = {2},
+  pages   = {51--59},
+  year    = {2002},
+  doi     = {10.1145/564585.564601}
+}
+
+@misc{accord2021,
+  author       = {Elliott Smith, Benedict and Zhang, Tony and Eggleston, Blake and Andreas, Scott},
+  title        = {{CEP-15}: Fast General Purpose Transactions (Accord whitepaper, draft)},
+  howpublished = {\url{https://cwiki.apache.org/confluence/download/attachments/188744725/Accord.pdf}},
+  year         = {2021}
+}
+
+@misc{cep14,
+  author       = {{The Apache Software Foundation}},
+  title        = {{CEP-14}: Paxos Improvements},
+  howpublished = {\url{https://cwiki.apache.org/confluence/display/CASSANDRA/CEP-14%3A+Paxos+Improvements}},
+  note         = {Implemented in 4.1 (CASSANDRA-17164); accessed Nov. 2026}
+}
+
+@misc{cep15,
+  author       = {{The Apache Software Foundation}},
+  title        = {{CEP-15}: General Purpose Transactions},
+  howpublished = {\url{https://cwiki.apache.org/confluence/display/CASSANDRA/CEP-15%3A+General+Purpose+Transactions}},
+  note         = {Accessed Nov. 2026}
+}
+
+@misc{cep21,
+  author       = {{The Apache Software Foundation}},
+  title        = {{CEP-21}: Transactional Cluster Metadata},
+  howpublished = {\url{https://cwiki.apache.org/confluence/display/CASSANDRA/CEP-21%3A+Transactional+Cluster+Metadata}},
+  note         = {CASSANDRA-18330; accessed Nov. 2026}
+}
+
+@misc{cep37,
+  author       = {{The Apache Software Foundation}},
+  title        = {{CEP-37}: Apache {Cassandra} Unified Repair Solution},
+  howpublished = {\url{https://cwiki.apache.org/confluence/display/CASSANDRA/CEP-37%3A+Apache+Cassandra+Unified+Repair+Solution}},
+  note         = {Accessed Nov. 2026}
+}
+
+@misc{cass6alpha,
+  author       = {{The Apache Cassandra Team}},
+  title        = {[ANNOUNCE] Apache {Cassandra} 6.0-alpha1 (quarterly alpha release)},
+  howpublished = {dev@cassandra.apache.org mailing list, \url{https://go.mail-archive.com/dev@cassandra.apache.org/msg27951.html}},
+  year         = {2026}
+}
+
+@misc{cassdoc-repair,
+  author       = {{The Apache Software Foundation}},
+  title        = {Apache {Cassandra} Documentation: Repair},
+  howpublished = {\url{https://cassandra.apache.org/doc/4.0/cassandra/operating/repair.html}},
+  note         = {Accessed Nov. 2026}
+}
+
+@misc{cassdoc-tombstones,
+  author       = {{The Apache Software Foundation}},
+  title        = {Apache {Cassandra} Documentation: Tombstones},
+  howpublished = {\url{https://cassandra.apache.org/doc/latest/cassandra/managing/operating/compaction/tombstones.html}},
+  note         = {Accessed Nov. 2026}
+}
+
+@misc{cassdoc-autorepair,
+  author       = {{The Apache Software Foundation}},
+  title        = {Apache {Cassandra} Documentation: Auto Repair},
+  howpublished = {\url{https://cassandra.apache.org/doc/latest/cassandra/managing/operating/auto_repair.html}},
+  note         = {Accessed Nov. 2026}
+}
+
+@misc{cass13257,
+  author       = {{The Apache Software Foundation}},
+  title        = {{CASSANDRA-13257}: Add Repair Streaming Preview},
+  howpublished = {\url{https://issues.apache.org/jira/browse/CASSANDRA-13257}},
+  note         = {Fixed in 4.0}
+}
+
+@misc{cass21316,
+  author       = {{The Apache Software Foundation}},
+  title        = {{CASSANDRA-21316}: Add Paxos v2 Option and Information in cassandra.yaml},
+  howpublished = {\url{https://issues.apache.org/jira/browse/CASSANDRA-21316}},
+  note         = {4.1.12 / 5.0.9; documents v1 as the default (4 round trips per write, 3 per read)}
+}

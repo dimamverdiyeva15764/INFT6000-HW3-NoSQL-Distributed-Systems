@@ -1,0 +1,6 @@
+fault,n,mean_s,min_s,max_s,sd_s
+kill (down),13,19.632,18.869,22.193,0.924
+"partition, majority view",4,19.191,18.749,19.383,0.297
+"partition, minority view",4,18.749,18.102,19.236,0.548
+start (up),16,9.854,7.247,11.117,1.069
+stop (down),3,0.673,0.540,0.814,0.137

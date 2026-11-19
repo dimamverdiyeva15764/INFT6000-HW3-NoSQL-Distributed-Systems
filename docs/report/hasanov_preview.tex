@@ -1,0 +1,29 @@
+% Stand-alone preview of Habib Hasanov's report sections (NOT the submitted report).
+% Build from docs/report/:  latexmk -pdf -outdir=build hasanov_preview.tex
+% The final IEEEtran report includes the same section files (see README_HabibHasanov.md).
+\documentclass[10pt,twocolumn]{article}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{graphicx,amsmath,amssymb,url,booktabs}
+\usepackage[hidelinks]{hyperref}
+\graphicspath{{../diagrams/}{../../results/figures/}}
+\title{INFT 6000 HW3 --- Group 4\\\large Preview: Sections 4, 5 and 7.4 (Habib Hasanov)}
+\author{Habib Hasanov}\date{}
+\begin{document}
+\maketitle
+% Stand-in labels for sections written by other members (defined in their files).
+\makeatletter
+\def\hhstub#1#2{\expandafter\gdef\csname r@#1\endcsname{{#2}{}{}{}{}}}
+\hhstub{sec:architecture}{2}\hhstub{sec:consistency}{3}\hhstub{sec:cap}{6}\hhstub{sec:setup}{7.1}
+\makeatother
+\setcounter{section}{3}
+\input{sec4_antientropy}
+\input{sec5_consensus}
+\setcounter{section}{6}
+\section{Experimental Results}
+\setcounter{subsection}{3}
+\input{sec7_4_results_exp4_6}
+\subsection*{Contribution to Section 7.3 (fault-phase analysis of Exp 3 and 5)}
+\input{sec7_fault_analysis}
+\bibliographystyle{ieeetr}
+\bibliography{references}
+\end{document}

@@ -3,7 +3,7 @@ RUN     := $(COMPOSE) run --rm client
 
 .PHONY: help up down reset schema status smoke cqlsh shell client \
         add-node decommission-node exp1 exp2 exp3 exp4 exp5 exp6 figures \
-        test exp2-quick exp2-report demo-exp2
+        test exp2-quick exp2-report demo-exp2 verify exp6-race deck
 
 help:
 	@echo "Cluster:     make up | schema | status | smoke | down | reset"
@@ -11,6 +11,7 @@ help:
 	@echo "Topology:    make add-node [PRELOAD=100000] | decommission-node"
 	@echo "Experiments: make exp1 ... exp6 | figures"
 	@echo "Person 2:    make test | exp2-quick | exp2-report | demo-exp2"
+	@echo "H. Hasanov:  make verify | exp4 [VARIANT=all|4a|4b|4c] [REP=n] | exp6 [REP=n] | exp6-race | figures | deck"
 
 up:
 	bash scripts/up.sh
@@ -82,11 +83,27 @@ demo-exp2: client
 	$(RUN) python -m workload.runner --mode mixed --cl ONE --rate 200 --duration 20 --exp demo --variant live
 	$(RUN) python -m workload.runner --mode mixed --cl ALL --rate 200 --duration 20 --exp demo --variant live
 
-exp4:
-	bash recovery/hints_vs_repair.sh
+# Habib Hasanov - recovery, consensus, analysis --------------------------------------
+PYTHON ?= python3
 
-exp6:
-	$(RUN) python -m recovery.lwt_demo race --clients 10 --handles 20
+# Convergence check: Merkle-tree preview repair (+ acknowledged writes if WRITES is given).
+verify:
+	$(PYTHON) -m recovery.verify_convergence full --label $(or $(LABEL),manual) $(if $(WRITES),--writes $(WRITES),)
 
-figures:
+exp4: client
+	bash recovery/hints_vs_repair.sh $(if $(VARIANT),--variant $(VARIANT),) $(if $(REP),--rep $(REP),) $(if $(ROWS),--rows $(ROWS),)
+
+exp6: client
+	bash recovery/run_exp6.sh $(if $(REP),--rep $(REP),)
+
+# Live demo segment: one LWT race, one line per handle.
+exp6-race: client
+	$(RUN) python -m recovery.lwt_demo race --clients 10 --handles 20 --variant demo
+
+# Summary tables, report numbers and figures from results/ (refuses to run without data).
+figures: client
 	$(RUN) sh -c "python -m analysis.summarize && python -m analysis.plots"
+
+# Group slide deck (docs/presentation/group4_deck.pptx); needs Node with pptxgenjs (npm i -g pptxgenjs).
+deck:
+	node docs/presentation/build_deck.js

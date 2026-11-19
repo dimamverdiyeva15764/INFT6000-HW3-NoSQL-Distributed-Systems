@@ -69,6 +69,7 @@ The client image is built automatically on first use (`make client` rebuilds it)
 CREATE TABLE chat.messages   (room text, msg_id timeuuid, author text, body text, writer_run text,
                               PRIMARY KEY (room, msg_id)) WITH CLUSTERING ORDER BY (msg_id DESC);
 CREATE TABLE chat.room_state (room text PRIMARY KEY, last_seq bigint, updated_by text);
+CREATE TABLE chat.usernames  (handle text PRIMARY KEY, owner text);          -- Exp 6 (LWT / Paxos)
 ```
 
 Every `schema/*.cql` file is applied in name order by `make schema`; statements use
@@ -152,6 +153,58 @@ Exp 3/5 CSVs go to `results/raw/exp3/` and `results/raw/exp5/`; orchestration lo
 status snapshots, and detection measurements go under `results/logs/exp3/` and
 `results/logs/exp5/`. `chaos/detect_down.py` is host-side and uses only the Python
 standard library. Keep the Docker cluster running while an experiment is in progress.
+
+### Experiment 4 — Recovery: hinted handoff, read repair, anti-entropy
+
+See [experiments/EXP4_recovery.md](experiments/EXP4_recovery.md).
+
+```bash
+make verify                     # healthy cluster: Merkle-tree preview repair -> CONVERGENCE PASS
+make exp4                       # baseline + 4a hints + 4b read repair + 4c full repair (~5 min)
+make exp4 VARIANT=4a REP=2      # one variant / another repetition
+```
+
+4a kills cass3, writes 5,000 keys at QUORUM and measures how the coordinators' hints drain
+after the restart; 4b repeats this with `nodetool disablehandoff`, so only keys read at ALL
+are repaired (a never-read control sample stays stale); 4c runs `nodetool repair --full` and
+reads **every** acknowledged key back at ALL (`CONVERGENCE ... PASS`). Divergence is measured
+with `nodetool repair --full --preview` (Merkle trees compared, nothing streamed); which
+replica served a read is taken from the query trace. Handoff is always re-enabled on exit.
+Raw CSVs: `results/raw/exp4/`; evidence: `results/logs/exp4/<run>/`; every verdict:
+`results/logs/exp4/convergence_checks.csv`.
+
+### Experiment 6 — Paxos lightweight transactions
+
+See [experiments/EXP6_lwt_paxos.md](experiments/EXP6_lwt_paxos.md).
+
+```bash
+make exp6                       # LWT race, plain race, latency, trace, races with 1 and 2 nodes down
+make exp6-race                  # live demo: 10 clients race for each of 20 handles
+```
+
+Ten threads claim the same handle at the same instant with `INSERT ... IF NOT EXISTS`
+(serial SERIAL): exactly one `[applied]=True` per handle is expected, and the same race with
+a plain `INSERT` shows every client acknowledged but only one write surviving (last-write-wins).
+The script exits non-zero only on a safety violation (two winners). Raw CSVs:
+`results/raw/exp6/`; per-handle detail, traces, summaries: `results/logs/exp6/`.
+
+### Summary tables and figures (all experiments)
+
+```bash
+make figures      # results/summary/*.csv + summary.md, results/figures/*.png, docs/report/generated/*.tex
+```
+
+`analysis/summarize.py` reads every CSV under `results/raw/` (shared schema) and the chaos
+event log: latency percentiles, throughput, error types, stale reads per experiment/variant/CL,
+availability **per fault phase** (before / fault / after, from `chaos_events.csv`), gossip
+detection times, and the Exp 4/6 values used by report section 7.4. `analysis/plots.py` draws
+the fault availability timeline, detection times, Exp 2 latency distribution, Exp 4 hint drain
+and Exp 6 LWT latency at 300 dpi. Both refuse to run without data, so no placeholder number
+reaches the report; Person 2's `make exp2-report` still produces the Exp 2 tables.
+
+Report sections 4, 5 and 7.4: `docs/report/sec4_antientropy.tex`, `sec5_consensus.tex`,
+`sec7_4_results_exp4_6.tex` (preview: `docs/report/hasanov_preview.tex`); diagrams:
+`python docs/diagrams/hasanov_diagrams.py`; bibliography: `docs/references.bib`.
 
 ## Application and workload generator
 

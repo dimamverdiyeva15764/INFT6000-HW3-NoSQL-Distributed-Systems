@@ -1,0 +1,19 @@
+{
+  "name": "Group 4 Cassandra",
+  "headFontFace": "Cambria",
+  "bodyFontFace": "Calibri",
+  "colors": {
+    "dk1": "14213D",
+    "lt1": "FFFFFF",
+    "dk2": "3D4A63",
+    "lt2": "EEF1F6",
+    "accent1": "FCA311",
+    "accent2": "2A78D6",
+    "accent3": "EB6834",
+    "accent4": "1BAF7A",
+    "accent5": "6250D6",
+    "accent6": "8A93A6",
+    "hlink": "2A78D6",
+    "folHlink": "6250D6"
+  }
+}

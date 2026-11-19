@@ -1,0 +1,4 @@
+# latexmk configuration for docs/report (Habib Hasanov): lets every report file use the
+# group bibliography docs/references.bib with \bibliography{references}, also with -outdir.
+use Cwd 'abs_path';
+ensure_path('BIBINPUTS', abs_path('..'));
