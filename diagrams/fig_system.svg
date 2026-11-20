@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040"><title>CassChat deployed system architecture - Group 4</title><defs><marker id="a-cql" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2a78d6"/></marker><marker id="a-repl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#eb6834"/></marker><marker id="a-gossip" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1b9a6c"/></marker><marker id="a-fault" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c62f2f"/></marker><marker id="a-admin" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6250d6"/></marker><marker id="a-file" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b6b66"/></marker></defs><rect width="1600" height="1040" fill="#ffffff"/><text x="800" y="34.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="20" font-weight="bold" fill="#1b1b1b" text-anchor="middle" xml:space="preserve">CassChat deployment as run for Experiments 1-6 (docker-compose.yml, Cassandra 5.0.8)</text>
+<text x="800" y="56.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="13.5" font-weight="normal" fill="#4a4a48" text-anchor="middle" xml:space="preserve" font-style="italic">Peer-to-peer cluster: no master node. Any node coordinates any request; seeds only help gossip bootstrap.</text>
+<rect x="18" y="82" width="1564" height="944" rx="12" fill="#f6f6f4" fill-opacity="1.0" stroke="#55554f" stroke-width="1.6"/>
+<rect x="28" y="71" width="417" height="22" rx="5" fill="#55554f"/>
+<text x="33" y="87.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#fff" text-anchor="start" xml:space="preserve">Host: Windows 11 laptop, WSL2 Ubuntu, Docker Desktop</text>
+<rect x="38" y="120" width="352" height="700" rx="12" fill="#fbfbfa" fill-opacity="1.0" stroke="#7a7a75" stroke-width="1.3"/>
+<rect x="48" y="109" width="264" height="22" rx="5" fill="#7a7a75"/>
+<text x="53" y="125.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#fff" text-anchor="start" xml:space="preserve">Host shell (bash, make, docker CLI)</text>
+<rect x="54" y="145" width="320" height="98" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#4a4a48" stroke-width="1.3"/>
+<text x="64" y="164.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">Experiment orchestration</text>
+<text x="64" y="178.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">Makefile targets: up, schema, smoke, exp1-exp6,</text>
+<text x="64" y="193.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">verify, figures  (scripts/run_exp1.sh,</text>
+<text x="64" y="207.6" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">chaos/run_exp3.sh, run_exp5.sh,</text>
+<text x="64" y="222.1" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">recovery/hints_vs_repair.sh, run_exp6.sh)</text>
+<rect x="54" y="272" width="320" height="236" rx="12" fill="#fdf1f0" fill-opacity="1.0" stroke="#c62f2f" stroke-width="1.6" stroke-dasharray="8 4"/>
+<rect x="64" y="261" width="213" height="22" rx="5" fill="#c62f2f"/>
+<text x="69" y="277.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#fff" text-anchor="start" xml:space="preserve">Fault injection (chaos/*.sh)</text>
+<rect x="68" y="296" width="292" height="200" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#c62f2f" stroke-width="1.3"/>
+<text x="78" y="315.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">One node at a time, under traffic</text>
+<text x="78" y="329.0" font-family="'Courier New', 'Liberation Mono', monospace" font-size="10.6" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">kill_node.sh      docker kill --signal KILL</text>
+<text x="78" y="343.0" font-family="'Courier New', 'Liberation Mono', monospace" font-size="10.6" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">stop_node.sh      docker stop --time 30</text>
+<text x="78" y="357.0" font-family="'Courier New', 'Liberation Mono', monospace" font-size="10.6" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">start_node.sh     docker start</text>
+<text x="78" y="371.0" font-family="'Courier New', 'Liberation Mono', monospace" font-size="10.6" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">partition.sh      docker network disconnect</text>
+<text x="78" y="385.0" font-family="'Courier New', 'Liberation Mono', monospace" font-size="10.6" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">heal.sh           docker network connect</text>
+<text x="78" y="399.0" font-family="'Courier New', 'Liberation Mono', monospace" font-size="10.6" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">pause_node.sh     docker pause (optional,</text>
+<text x="78" y="412.9" font-family="'Courier New', 'Liberation Mono', monospace" font-size="10.6" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">                  not used in Exp 3/5)</text>
+<text x="78" y="426.9" font-family="'Courier New', 'Liberation Mono', monospace" font-size="10.6" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">Each action -&gt; results/logs/chaos_events.csv</text>
+<rect x="54" y="538" width="320" height="266" rx="12" fill="#f2f0fd" fill-opacity="1.0" stroke="#6250d6" stroke-width="1.5" stroke-dasharray="3 3"/>
+<rect x="64" y="527" width="206" height="22" rx="5" fill="#6250d6"/>
+<text x="69" y="543.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#fff" text-anchor="start" xml:space="preserve">Monitoring and verification</text>
+<rect x="68" y="562" width="292" height="228" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#6250d6" stroke-width="1.3"/>
+<text x="78" y="581.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">Observers (no effect on data path)</text>
+<text x="78" y="595.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">detect_down.py: tails docker logs -t of a</text>
+<text x="78" y="610.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">  peer, matches 'is now DOWN/UP',</text>
+<text x="78" y="624.6" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">  detection time vs chaos_events.csv</text>
+<text x="78" y="639.1" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">nodetool status / ring / getendpoints</text>
+<text x="78" y="653.6" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">nodetool listpendinghints, hint-file bytes</text>
+<text x="78" y="668.1" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">nodetool repair --full [--preview]</text>
+<text x="78" y="682.6" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">  (verify_convergence.py, Exp 4)</text>
+<text x="78" y="697.2" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">query traces (driver) for read repair</text>
+<text x="78" y="711.7" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">  and Paxos phases (Exp 4b, Exp 6)</text>
+<rect x="410" y="120" width="1154" height="700" rx="12" fill="#f3f7fc" fill-opacity="1.0" stroke="#3d6fa8" stroke-width="1.4"/>
+<rect x="420" y="109" width="329" height="22" rx="5" fill="#3d6fa8"/>
+<text x="425" y="125.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#fff" text-anchor="start" xml:space="preserve">Docker engine (Compose project inft6000-hw3)</text>
+<rect x="426" y="160" width="1122" height="640" rx="12" fill="#ffffff" fill-opacity="1.0" stroke="#5b8fd0" stroke-width="1.3" stroke-dasharray="6 4"/>
+<rect x="436" y="149" width="261" height="22" rx="5" fill="#5b8fd0"/>
+<text x="441" y="165.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#fff" text-anchor="start" xml:space="preserve">Bridge network cassnet 172.28.0.0/16</text>
+<text x="702.0" y="165.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="9.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve" font-style="italic">static node IPs; dynamic IPs from 172.28.1.0/24</text>
+<rect x="444" y="200" width="360" height="580" rx="12" fill="#eef5fd" fill-opacity="1.0" stroke="#2a78d6" stroke-width="1.6"/>
+<rect x="454" y="189" width="242" height="22" rx="5" fill="#2a78d6"/>
+<text x="459" y="205.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#fff" text-anchor="start" xml:space="preserve">client container (profile tools)</text>
+<text x="456" y="230.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve" font-style="italic">python:3.11-slim, repo bind-mounted at /work</text>
+<rect x="458" y="244" width="332" height="50" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#9fbfe6" stroke-width="1.3"/>
+<text x="468" y="263.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">workload/runner.py</text>
+<text x="468" y="277.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">load generator: write | read | mixed, rate, CL</text>
+<rect x="458" y="302" width="332" height="50" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#9fbfe6" stroke-width="1.3"/>
+<text x="468" y="321.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">app/chat.py</text>
+<text x="468" y="335.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">CassChat CLI: rooms, post, read</text>
+<rect x="458" y="360" width="332" height="50" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#9fbfe6" stroke-width="1.3"/>
+<text x="468" y="379.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">chaos/availability_probe.py</text>
+<text x="468" y="393.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">1 write + 1 read per CL every 250 ms</text>
+<rect x="458" y="418" width="332" height="50" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#9fbfe6" stroke-width="1.3"/>
+<text x="468" y="437.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">recovery/verify_convergence.py</text>
+<text x="468" y="451.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">write / read-sample / acked check</text>
+<rect x="458" y="476" width="332" height="50" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#9fbfe6" stroke-width="1.3"/>
+<text x="468" y="495.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">recovery/lwt_demo.py</text>
+<text x="468" y="509.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">Exp 6: race, latency, trace</text>
+<rect x="458" y="540" width="332" height="192" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#2a78d6" stroke-width="1.8"/>
+<text x="468" y="559.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">DataStax Python driver 3.29.3</text>
+<text x="468" y="573.8" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">TokenAwarePolicy(DCAwareRoundRobin, dc1):</text>
+<text x="468" y="588.6" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">  sends each request to a replica of the</text>
+<text x="468" y="603.4" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">  partition, which acts as coordinator</text>
+<text x="468" y="618.1" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">WhiteListRoundRobin for pinned reads (Exp 4)</text>
+<text x="468" y="632.9" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">FallthroughRetryPolicy: no retries</text>
+<text x="468" y="647.7" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">request timeout 5 s; no speculative exec.</text>
+<text x="468" y="662.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">CL set per statement: ONE | QUORUM | ALL,</text>
+<text x="468" y="677.3" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">  SERIAL for the LWT Paxos phase (Exp 6)</text>
+<rect x="826" y="200" width="704" height="580" rx="12" fill="#f1faf6" fill-opacity="1.0" stroke="#1b9a6c" stroke-width="1.7"/>
+<rect x="836" y="189" width="344" height="22" rx="5" fill="#1b9a6c"/>
+<text x="841" y="205.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#fff" text-anchor="start" xml:space="preserve">Cassandra cluster inft6000-g4 - DC dc1 / rack1</text>
+<text x="842" y="232.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve" font-style="italic">GossipingPropertyFileSnitch, Murmur3Partitioner, 16 vnodes per node</text>
+<rect x="842" y="244" width="270" height="92" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#8cc9ad" stroke-width="1.3"/>
+<text x="852" y="263.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">Keyspace chat</text>
+<text x="852" y="277.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">NetworkTopologyStrategy {dc1: 3}</text>
+<text x="852" y="292.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">RF = N = 3: every partition on all 3 nodes</text>
+<text x="852" y="306.6" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">tables: messages, room_state, usernames</text>
+<ellipse cx="1180" cy="530" rx="190" ry="150" fill="none" stroke="#b9dccb" stroke-width="10" stroke-opacity="0.55"/>
+<text x="1180" y="540.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="normal" fill="#5d9c80" text-anchor="middle" xml:space="preserve" font-style="italic">token ring</text>
+<text x="1180" y="556.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#5d9c80" text-anchor="middle" xml:space="preserve" font-style="italic">(48 vnode tokens)</text>
+<rect x="1082" y="300" width="196" height="104" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#1b9a6c" stroke-width="2.0"/>
+<text x="1092" y="319.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">cass1</text>
+<text x="1092" y="334.2" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">172.28.0.11</text>
+<text x="1092" y="349.4" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">CQL 9042 also on 127.0.0.1</text>
+<text x="1092" y="364.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">volume cass1-data</text>
+<rect x="1206" y="306" width="62" height="18" rx="9" fill="#e3f4ec" stroke="#1b9a6c"/>
+<text x="1237" y="319.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#14724f" text-anchor="middle" xml:space="preserve">seed</text>
+<rect x="866" y="560" width="196" height="104" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#1b9a6c" stroke-width="2.0"/>
+<text x="876" y="579.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">cass2</text>
+<text x="876" y="594.2" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">172.28.0.12</text>
+<text x="876" y="609.4" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">internode :7000</text>
+<text x="876" y="624.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">volume cass2-data</text>
+<rect x="990" y="566" width="62" height="18" rx="9" fill="#e3f4ec" stroke="#1b9a6c"/>
+<text x="1021" y="579.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#14724f" text-anchor="middle" xml:space="preserve">seed</text>
+<rect x="1302" y="560" width="196" height="104" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#1b9a6c" stroke-width="2.0"/>
+<text x="1312" y="579.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">cass3</text>
+<text x="1312" y="594.2" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">172.28.0.13</text>
+<text x="1312" y="609.4" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">internode :7000</text>
+<text x="1312" y="624.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">volume cass3-data</text>
+<rect x="1112" y="680" width="172" height="84" rx="7" fill="#fafafa" fill-opacity="1.0" stroke="#7a7a75" stroke-width="1.3" stroke-dasharray="5 4"/>
+<text x="1122" y="699.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">cass4 (optional)</text>
+<text x="1122" y="713.3" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.8" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">172.28.0.14, profile scale</text>
+<text x="1122" y="727.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.8" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">Exp 1 join/decommission only</text>
+<path d="M1082,360 L980,360 L980,560" fill="none" stroke="#1b9a6c" stroke-width="2.0" stroke-dasharray="7 5" marker-start="url(#a-gossip)" marker-end="url(#a-gossip)" stroke-linejoin="round"/>
+<path d="M1278,360 L1390,360 L1390,560" fill="none" stroke="#1b9a6c" stroke-width="2.0" stroke-dasharray="7 5" marker-start="url(#a-gossip)" marker-end="url(#a-gossip)" stroke-linejoin="round"/>
+<path d="M1062,650 L1302,650" fill="none" stroke="#1b9a6c" stroke-width="2.0" stroke-dasharray="7 5" marker-start="url(#a-gossip)" marker-end="url(#a-gossip)" stroke-linejoin="round"/>
+<rect x="1082" y="628" width="200" height="18" rx="3" fill="#ffffff" fill-opacity="0.92"/>
+<text x="1182" y="640.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#1b9a6c" text-anchor="middle" xml:space="preserve">gossip 1 s rounds, phi-accrual FD</text>
+<text x="1450" y="330.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#1b9a6c" text-anchor="middle" xml:space="preserve">gossip :7000</text>
+<path d="M1120,404 L1000,560" fill="none" stroke="#eb6834" stroke-width="2.0" marker-end="url(#a-repl)" stroke-linejoin="round"/>
+<rect x="976" y="458" width="72" height="32" rx="3" fill="#ffffff" fill-opacity="0.92"/>
+<text x="1012" y="470.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#eb6834" text-anchor="middle" xml:space="preserve">mutation /</text>
+<text x="1012" y="483.8" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#eb6834" text-anchor="middle" xml:space="preserve">read (RF 3)</text>
+<path d="M1240,404 L1370,560" fill="none" stroke="#eb6834" stroke-width="2.0" marker-end="url(#a-repl)" stroke-linejoin="round"/>
+<text x="1180" y="450.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#eb6834" text-anchor="middle" xml:space="preserve">here cass1 coordinates;</text>
+<text x="1180" y="465.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#eb6834" text-anchor="middle" xml:space="preserve">next request may use any node</text>
+<text x="1180" y="480.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#eb6834" text-anchor="middle" xml:space="preserve" font-style="italic">(per-request role, not a leader)</text>
+<path d="M790,570 L830,570 L830,352 L1082,352" fill="none" stroke="#2a78d6" stroke-width="2.0" marker-end="url(#a-cql)" stroke-linejoin="round"/>
+<rect x="869" y="332" width="63" height="18" rx="3" fill="#ffffff" fill-opacity="0.92"/>
+<text x="900" y="344.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#2a78d6" text-anchor="middle" xml:space="preserve">CQL :9042</text>
+<path d="M790,610 L866,610" fill="none" stroke="#2a78d6" stroke-width="2.0" marker-end="url(#a-cql)" stroke-linejoin="round"/>
+<path d="M790,712 L850,712 L850,790 L1400,790 L1400,664" fill="none" stroke="#2a78d6" stroke-width="2.0" marker-end="url(#a-cql)" stroke-linejoin="round"/>
+<rect x="975" y="774" width="300" height="18" rx="3" fill="#ffffff" fill-opacity="0.92"/>
+<text x="1125" y="786.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#2a78d6" text-anchor="middle" xml:space="preserve">driver connects to every node (any can coordinate)</text>
+<path d="M374,330 L400,330 L400,104 L1470,104 L1470,200" fill="none" stroke="#c62f2f" stroke-width="2.0" stroke-dasharray="10 4 2 4" marker-end="url(#a-fault)" stroke-linejoin="round"/>
+<rect x="737" y="88" width="386" height="18" rx="3" fill="#ffffff" fill-opacity="0.92"/>
+<text x="930" y="100.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#c62f2f" text-anchor="middle" xml:space="preserve">docker kill | stop | start | network disconnect/connect  cassN</text>
+<path d="M374,700 L396,700 L396,838 L1500,838 L1500,780" fill="none" stroke="#6250d6" stroke-width="2.0" stroke-dasharray="3 3" marker-end="url(#a-admin)" stroke-linejoin="round"/>
+<rect x="760" y="822" width="380" height="18" rx="3" fill="#ffffff" fill-opacity="0.92"/>
+<text x="950" y="834.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#6250d6" text-anchor="middle" xml:space="preserve">docker exec cassN nodetool ... / cqlsh;  docker logs -t cassN</text>
+<path d="M374,222 L444,222" fill="none" stroke="#6250d6" stroke-width="2.0" stroke-dasharray="3 3" marker-end="url(#a-admin)" stroke-linejoin="round"/>
+<path d="M214,243 L214,272" fill="none" stroke="#6250d6" stroke-width="2.0" stroke-dasharray="3 3" marker-end="url(#a-admin)" stroke-linejoin="round"/>
+<rect x="410" y="872" width="1154" height="136" rx="12" fill="#f7f7f5" fill-opacity="1.0" stroke="#6b6b66" stroke-width="1.4" stroke-dasharray="2 3"/>
+<rect x="420" y="861" width="519" height="22" rx="5" fill="#6b6b66"/>
+<text x="425" y="877.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#fff" text-anchor="start" xml:space="preserve">Results on host filesystem (bind-mounted into client at /work/results)</text>
+<rect x="428" y="900" width="272" height="92" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#b5b5ae" stroke-width="1.3"/>
+<text x="438" y="919.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">results/raw/expN/*.csv</text>
+<text x="438" y="933.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">one row per operation: time, CL, op,</text>
+<text x="438" y="948.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">outcome, error type, latency, coordinator</text>
+<rect x="710" y="900" width="272" height="92" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#b5b5ae" stroke-width="1.3"/>
+<text x="720" y="919.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">results/logs/</text>
+<text x="720" y="933.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">chaos_events.csv, per-run nodetool logs,</text>
+<text x="720" y="948.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">detection.csv, traces, preview output</text>
+<rect x="992" y="900" width="272" height="92" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#b5b5ae" stroke-width="1.3"/>
+<text x="1002" y="919.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">results/summary/, figures/</text>
+<text x="1002" y="933.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">analysis/summarize.py + plots.py:</text>
+<text x="1002" y="948.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">runs, groups, phases, detection, PNGs</text>
+<rect x="1274" y="900" width="272" height="92" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#b5b5ae" stroke-width="1.3"/>
+<text x="1284" y="919.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">docs/report/generated/</text>
+<text x="1284" y="933.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">LaTeX macros and tables generated</text>
+<text x="1284" y="948.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">from the CSVs (no hand-typed numbers)</text>
+<path d="M620,780 L620,900" fill="none" stroke="#6b6b66" stroke-width="2.0" stroke-dasharray="1 4" marker-end="url(#a-file)" stroke-linejoin="round"/>
+<rect x="624" y="834" width="66" height="18" rx="3" fill="#ffffff" fill-opacity="0.92"/>
+<text x="628" y="846.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#6b6b66" text-anchor="start" xml:space="preserve">CSV per op</text>
+<rect x="38" y="836" width="352" height="166" rx="8" fill="#ffffff" fill-opacity="1.0" stroke="#c9c9c3" stroke-width="1.2"/>
+<text x="50" y="856.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">Edge types</text>
+<path d="M50.0,871 L84.0,871" stroke="#2a78d6" stroke-width="2.2" marker-end="url(#a-cql)"/>
+<text x="94.0" y="875.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#1b1b1b" text-anchor="start" xml:space="preserve">client CQL request (port 9042)</text>
+<path d="M50.0,893 L84.0,893" stroke="#eb6834" stroke-width="2.2" marker-end="url(#a-repl)"/>
+<text x="94.0" y="897.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#1b1b1b" text-anchor="start" xml:space="preserve">coordinator-to-replica data traffic</text>
+<path d="M50.0,915 L84.0,915" stroke="#1b9a6c" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#a-gossip)"/>
+<text x="94.0" y="919.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#1b1b1b" text-anchor="start" xml:space="preserve">gossip / failure detection (7000)</text>
+<path d="M50.0,937 L84.0,937" stroke="#c62f2f" stroke-width="2.2" stroke-dasharray="10 4 2 4" marker-end="url(#a-fault)"/>
+<text x="94.0" y="941.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#1b1b1b" text-anchor="start" xml:space="preserve">fault injection (Docker API)</text>
+<path d="M50.0,959 L84.0,959" stroke="#6250d6" stroke-width="2.2" stroke-dasharray="3 3" marker-end="url(#a-admin)"/>
+<text x="94.0" y="963.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#1b1b1b" text-anchor="start" xml:space="preserve">control: compose run, docker exec</text>
+<path d="M50.0,981 L84.0,981" stroke="#6b6b66" stroke-width="2.2" stroke-dasharray="1 4" marker-end="url(#a-file)"/>
+<text x="94.0" y="985.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#1b1b1b" text-anchor="start" xml:space="preserve">file output (CSV, logs)</text></svg>

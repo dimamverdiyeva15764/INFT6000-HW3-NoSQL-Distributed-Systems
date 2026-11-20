@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200"><title>Detailed request sequence - Group 4</title><defs><marker id="a-cql" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2a78d6"/></marker><marker id="a-repl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#eb6834"/></marker><marker id="a-gossip" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1b9a6c"/></marker><marker id="a-fault" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c62f2f"/></marker><marker id="a-admin" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6250d6"/></marker><marker id="a-file" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b6b66"/></marker></defs><rect width="1600" height="1200" fill="#ffffff"/><text x="800.0" y="32.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="20" font-weight="bold" fill="#1b1b1b" text-anchor="middle" xml:space="preserve">Sequence of one write: workload/runner.py -&gt; app/db.py -&gt; driver -&gt; Cassandra -&gt; CSV row</text>
+<text x="800.0" y="54.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="13.5" font-weight="normal" fill="#4a4a48" text-anchor="middle" xml:space="preserve" font-style="italic">Mode mixed, CL QUORUM, RF 3. Here the driver picked cass1 as coordinator; any replica can be picked. Solid = synchronous, dashed = asynchronous or reply.</text>
+<rect x="13" y="92" width="184" height="52" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#2a78d6" stroke-width="1.9"/>
+<text x="105" y="114.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#1b1b1b" text-anchor="middle" xml:space="preserve">Worker thread</text>
+<text x="105" y="132.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="middle" xml:space="preserve">workload/runner.py</text>
+<path d="M105,144 L105,1170" stroke="#bdbdb6" stroke-width="1.4" stroke-dasharray="4 4"/>
+<rect x="245" y="92" width="184" height="52" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#eb6834" stroke-width="1.9"/>
+<text x="337" y="114.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#1b1b1b" text-anchor="middle" xml:space="preserve">app/db.py</text>
+<text x="337" y="132.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="middle" xml:space="preserve">stmt, timed_execute</text>
+<path d="M337,144 L337,1170" stroke="#bdbdb6" stroke-width="1.4" stroke-dasharray="4 4"/>
+<rect x="477" y="92" width="184" height="52" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#eb6834" stroke-width="1.9"/>
+<text x="569" y="114.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#1b1b1b" text-anchor="middle" xml:space="preserve">Python driver</text>
+<text x="569" y="132.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="middle" xml:space="preserve">cassandra-driver 3.29.3</text>
+<path d="M569,144 L569,1170" stroke="#bdbdb6" stroke-width="1.4" stroke-dasharray="4 4"/>
+<rect x="709" y="92" width="184" height="52" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#1b9a6c" stroke-width="1.9"/>
+<text x="801" y="114.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#1b1b1b" text-anchor="middle" xml:space="preserve">cass1</text>
+<text x="801" y="132.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="middle" xml:space="preserve">coordinator + replica</text>
+<path d="M801,144 L801,1170" stroke="#bdbdb6" stroke-width="1.4" stroke-dasharray="4 4"/>
+<rect x="941" y="92" width="184" height="52" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#1b9a6c" stroke-width="1.9"/>
+<text x="1033" y="114.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#1b1b1b" text-anchor="middle" xml:space="preserve">cass2</text>
+<text x="1033" y="132.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="middle" xml:space="preserve">replica</text>
+<path d="M1033,144 L1033,1170" stroke="#bdbdb6" stroke-width="1.4" stroke-dasharray="4 4"/>
+<rect x="1173" y="92" width="184" height="52" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#1b9a6c" stroke-width="1.9"/>
+<text x="1265" y="114.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#1b1b1b" text-anchor="middle" xml:space="preserve">cass3</text>
+<text x="1265" y="132.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="middle" xml:space="preserve">replica</text>
+<path d="M1265,144 L1265,1170" stroke="#bdbdb6" stroke-width="1.4" stroke-dasharray="4 4"/>
+<rect x="1405" y="92" width="184" height="52" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#6b6b66" stroke-width="1.9"/>
+<text x="1497" y="114.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#1b1b1b" text-anchor="middle" xml:space="preserve">ResultsLog</text>
+<text x="1497" y="132.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#4a4a48" text-anchor="middle" xml:space="preserve">CSV on host via bind mount</text>
+<path d="M1497,144 L1497,1170" stroke="#bdbdb6" stroke-width="1.4" stroke-dasharray="4 4"/>
+<rect x="5" y="78" width="664" height="1100" rx="12" fill="none" stroke="#2a78d6" stroke-width="1.3" stroke-dasharray="6 4"/>
+<text x="13" y="72.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#2a78d6" text-anchor="start" xml:space="preserve">client container</text>
+<rect x="701" y="78" width="664" height="1100" rx="12" fill="none" stroke="#1b9a6c" stroke-width="1.3" stroke-dasharray="6 4"/>
+<text x="709" y="72.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#1b9a6c" text-anchor="start" xml:space="preserve">Cassandra cluster (peers, no master)</text>
+<rect x="5.0" y="176" width="200" height="58" rx="6" fill="#eef5fd" fill-opacity="1.0" stroke="#9fbfe6" stroke-width="1.4"/>
+<text x="13.0" y="192.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">1. next_slot()</text>
+<text x="13.0" y="207.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">open loop: one slot every</text>
+<text x="13.0" y="220.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">1/rate s; wait until it</text>
+<marker id="q2a78d6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2a78d6"/></marker>
+<path d="M111,262 L331,262" stroke="#2a78d6" stroke-width="2" marker-end="url(#q2a78d6)"/>
+<rect x="129" y="243" width="185" height="15" rx="3" fill="#ffffff" fill-opacity="0.95"/>
+<text x="221.0" y="255.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#2a78d6" text-anchor="middle" xml:space="preserve">2. stmt(INSERT_CQL, 'QUORUM')</text>
+<rect x="237.0" y="272" width="200" height="58" rx="6" fill="#fff6f0" fill-opacity="1.0" stroke="#f0b08f" stroke-width="1.4"/>
+<text x="245.0" y="288.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">3. cache lookup</text>
+<text x="245.0" y="303.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">first use: session.prepare()</text>
+<text x="245.0" y="316.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">then CL fixed on the object</text>
+<marker id="qeb6834" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#eb6834"/></marker>
+<path d="M331,346 L111,346" stroke="#eb6834" stroke-width="2" stroke-dasharray="8 5" marker-end="url(#qeb6834)"/>
+<rect x="129" y="327" width="185" height="15" rx="3" fill="#ffffff" fill-opacity="0.95"/>
+<text x="221.0" y="339.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#eb6834" text-anchor="middle" xml:space="preserve">PreparedStatement (CL=QUORUM)</text>
+<marker id="q2a78d6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2a78d6"/></marker>
+<path d="M111,386 L331,386" stroke="#2a78d6" stroke-width="2" marker-end="url(#q2a78d6)"/>
+<rect x="22" y="367" width="398" height="15" rx="3" fill="#ffffff" fill-opacity="0.95"/>
+<text x="221.0" y="379.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#2a78d6" text-anchor="middle" xml:space="preserve">4. timed_execute(ps, [room, uuid1(), 'runner', payload, run_id])</text>
+<rect x="237.0" y="396" width="200" height="44" rx="6" fill="#fff6f0" fill-opacity="1.0" stroke="#f0b08f" stroke-width="1.4"/>
+<text x="245.0" y="412.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">5. t0 = perf_counter()</text>
+<marker id="qeb6834" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#eb6834"/></marker>
+<path d="M343,456 L563,456" stroke="#eb6834" stroke-width="2" marker-end="url(#qeb6834)"/>
+<rect x="361" y="437" width="185" height="15" rx="3" fill="#ffffff" fill-opacity="0.95"/>
+<text x="453.0" y="449.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#eb6834" text-anchor="middle" xml:space="preserve">6. session.execute_async(...)</text>
+<rect x="462.0" y="466" width="214" height="72" rx="6" fill="#fff6f0" fill-opacity="1.0" stroke="#f0b08f" stroke-width="1.4"/>
+<text x="470.0" y="482.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">7. route the request</text>
+<text x="470.0" y="497.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">routing key = room -&gt;</text>
+<text x="470.0" y="510.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">Murmur3 token -&gt; replicas</text>
+<text x="470.0" y="524.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">TokenAwarePolicy picks cass1</text>
+<marker id="qeb6834" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#eb6834"/></marker>
+<path d="M575,562 L795,562" stroke="#eb6834" stroke-width="2" marker-end="url(#qeb6834)"/>
+<rect x="562" y="543" width="246" height="15" rx="3" fill="#ffffff" fill-opacity="0.95"/>
+<text x="685.0" y="555.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#eb6834" text-anchor="middle" xml:space="preserve">8. EXECUTE (stmt id, values, CL QUORUM)</text>
+<text x="685.0" y="577.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="normal" fill="#4a4a48" text-anchor="middle" xml:space="preserve" font-style="italic">CQL native protocol, TCP 9042</text>
+<rect x="694.0" y="588" width="214" height="58" rx="6" fill="#f1faf6" fill-opacity="1.0" stroke="#8cc9ad" stroke-width="1.4"/>
+<text x="702.0" y="604.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">9. live replicas &gt;= 2?</text>
+<text x="702.0" y="619.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">gossip view: cass1-3 UP</text>
+<text x="702.0" y="632.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">yes -&gt; continue (else Unavailable)</text>
+<rect x="694.0" y="654" width="214" height="44" rx="6" fill="#f1faf6" fill-opacity="1.0" stroke="#8cc9ad" stroke-width="1.4"/>
+<text x="702.0" y="670.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">10. local write</text>
+<text x="702.0" y="685.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">commit log + memtable</text>
+<marker id="q1b9a6c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1b9a6c"/></marker>
+<path d="M807,718 L1027,718" stroke="#1b9a6c" stroke-width="2" stroke-dasharray="8 5" marker-end="url(#q1b9a6c)"/>
+<rect x="864" y="699" width="106" height="15" rx="3" fill="#ffffff" fill-opacity="0.95"/>
+<text x="917.0" y="711.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#1b9a6c" text-anchor="middle" xml:space="preserve">11. MUTATION_REQ</text>
+<marker id="q1b9a6c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1b9a6c"/></marker>
+<path d="M807,740 L1259,740" stroke="#1b9a6c" stroke-width="2" stroke-dasharray="8 5" marker-end="url(#q1b9a6c)"/>
+<rect x="959" y="721" width="148" height="15" rx="3" fill="#ffffff" fill-opacity="0.95"/>
+<text x="1033.0" y="733.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#1b9a6c" text-anchor="middle" xml:space="preserve">MUTATION_REQ (parallel)</text>
+<rect x="938.0" y="752" width="190" height="44" rx="6" fill="#f1faf6" fill-opacity="1.0" stroke="#8cc9ad" stroke-width="1.4"/>
+<text x="946.0" y="768.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">12. commit log + memtable</text>
+<marker id="q1b9a6c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1b9a6c"/></marker>
+<path d="M1027,822 L807,822" stroke="#1b9a6c" stroke-width="2" stroke-dasharray="8 5" marker-end="url(#q1b9a6c)"/>
+<rect x="846" y="803" width="142" height="15" rx="3" fill="#ffffff" fill-opacity="0.95"/>
+<text x="917.0" y="815.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#1b9a6c" text-anchor="middle" xml:space="preserve">13. MUTATION_RSP (ack)</text>
+<text x="917.0" y="837.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="normal" fill="#4a4a48" text-anchor="middle" xml:space="preserve" font-style="italic">cass1 + cass2 = 2 acks = QUORUM</text>
+<marker id="qeb6834" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#eb6834"/></marker>
+<path d="M795,862 L575,862" stroke="#eb6834" stroke-width="2" stroke-dasharray="8 5" marker-end="url(#qeb6834)"/>
+<rect x="629" y="843" width="112" height="15" rx="3" fill="#ffffff" fill-opacity="0.95"/>
+<text x="685.0" y="855.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#eb6834" text-anchor="middle" xml:space="preserve">14. RESULT (void)</text>
+<marker id="q1b9a6c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1b9a6c"/></marker>
+<path d="M1259,888 L807,888" stroke="#1b9a6c" stroke-width="2" stroke-dasharray="8 5" marker-end="url(#q1b9a6c)"/>
+<rect x="922" y="869" width="222" height="15" rx="3" fill="#ffffff" fill-opacity="0.95"/>
+<text x="1033.0" y="881.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#1b9a6c" text-anchor="middle" xml:space="preserve">MUTATION_RSP (late, not waited for)</text>
+<marker id="qeb6834" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#eb6834"/></marker>
+<path d="M563,918 L343,918" stroke="#eb6834" stroke-width="2" stroke-dasharray="8 5" marker-end="url(#qeb6834)"/>
+<rect x="367" y="899" width="173" height="15" rx="3" fill="#ffffff" fill-opacity="0.95"/>
+<text x="453.0" y="911.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#eb6834" text-anchor="middle" xml:space="preserve">15. future.result() returns</text>
+<rect x="230.0" y="928" width="214" height="58" rx="6" fill="#fff6f0" fill-opacity="1.0" stroke="#f0b08f" stroke-width="1.4"/>
+<text x="238.0" y="944.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">16. OpResult</text>
+<text x="238.0" y="959.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">outcome='ok', latency_ms,</text>
+<text x="238.0" y="972.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">coordinator=172.28.0.11</text>
+<marker id="qeb6834" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#eb6834"/></marker>
+<path d="M331,1008 L111,1008" stroke="#eb6834" stroke-width="2" stroke-dasharray="8 5" marker-end="url(#qeb6834)"/>
+<rect x="180" y="989" width="81" height="15" rx="3" fill="#ffffff" fill-opacity="0.95"/>
+<text x="221.0" y="1001.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#eb6834" text-anchor="middle" xml:space="preserve">17. OpResult</text>
+<marker id="q6b6b66" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6b6b66"/></marker>
+<path d="M111,1036 L1491,1036" stroke="#6b6b66" stroke-width="2" marker-end="url(#q6b6b66)"/>
+<rect x="535" y="1017" width="533" height="15" rx="3" fill="#ffffff" fill-opacity="0.95"/>
+<text x="801.0" y="1029.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#6b6b66" text-anchor="middle" xml:space="preserve">18. _record(): log(op=write, cl=QUORUM, key=room, latency_ms, outcome=ok, coordinator)</text>
+<rect x="1397.0" y="1046" width="200" height="44" rx="6" fill="#f7f7f5" fill-opacity="1.0" stroke="#b5b5ae" stroke-width="1.4"/>
+<text x="1405.0" y="1062.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">19. CSV row, flush()</text>
+<rect x="5.0" y="1046" width="200" height="44" rx="6" fill="#eef5fd" fill-opacity="1.0" stroke="#9fbfe6" stroke-width="1.4"/>
+<text x="13.0" y="1062.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">20. Stats.record()</text>
+<text x="13.0" y="1077.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">-&gt; per-second line</text>
+<rect x="461" y="1078" width="896" height="88" rx="6" fill="#fff7f6" fill-opacity="1.0" stroke="#c62f2f" stroke-width="1.5" stroke-dasharray="6 3"/>
+<rect x="461" y="1078" width="44" height="18" fill="#c62f2f"/>
+<text x="483" y="1091.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#ffffff" text-anchor="middle" xml:space="preserve">alt</text>
+<text x="515" y="1093.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#c62f2f" text-anchor="start" xml:space="preserve">error paths (no retry: FallthroughRetryPolicy; the row is still logged)</text>
+<text x="473" y="1114.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.3" font-weight="normal" fill="#1b1b1b" text-anchor="start" xml:space="preserve">fewer than 2 live replicas at step 9 -&gt; Unavailable -&gt; outcome 'unavailable' (nothing written)</text>
+<text x="473" y="1130.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.3" font-weight="normal" fill="#1b1b1b" text-anchor="start" xml:space="preserve">fewer than 2 acks within 2 s -&gt; WriteTimeout -&gt; 'write_timeout' (write may still be applied)</text>
+<text x="473" y="1146.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.3" font-weight="normal" fill="#1b1b1b" text-anchor="start" xml:space="preserve">no reply within 5 s -&gt; driver OperationTimedOut -&gt; 'client_timeout';  no reachable node -&gt; 'no_host'</text></svg>

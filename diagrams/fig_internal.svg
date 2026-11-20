@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000"><title>Cassandra node internals - Group 4</title><defs><marker id="a-cql" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2a78d6"/></marker><marker id="a-repl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#eb6834"/></marker><marker id="a-gossip" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1b9a6c"/></marker><marker id="a-fault" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c62f2f"/></marker><marker id="a-admin" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6250d6"/></marker><marker id="a-file" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b6b66"/></marker></defs><rect width="1600" height="1000" fill="#ffffff"/><text x="800" y="34.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="20" font-weight="bold" fill="#1b1b1b" text-anchor="middle" xml:space="preserve">Inside one Cassandra 5.0.8 node (all three nodes are identical: there is no special master node)</text>
+<text x="800" y="56.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="13.5" font-weight="normal" fill="#4a4a48" text-anchor="middle" xml:space="preserve" font-style="italic">Every node plays two roles per request: coordinator (if the driver picked it) and local replica (if it owns the token range; with RF = N = 3, every node owns every row).</text>
+<rect x="24" y="150" width="170" height="120" rx="7" fill="#eef5fd" fill-opacity="1.0" stroke="#2a78d6" stroke-width="1.8"/>
+<text x="34" y="169.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">Client (driver)</text>
+<text x="34" y="184.2" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">token-aware routing</text>
+<text x="34" y="199.4" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">CL per statement</text>
+<text x="34" y="214.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">SERIAL for LWT</text>
+<rect x="220" y="90" width="1050" height="880" rx="12" fill="#fbfbfa" fill-opacity="1.0" stroke="#3d3d39" stroke-width="1.8"/>
+<rect x="230" y="79" width="448" height="22" rx="5" fill="#3d3d39"/>
+<text x="235" y="95.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#fff" text-anchor="start" xml:space="preserve">Node cass1 (172.28.0.11) - same software on cass2, cass3</text>
+<rect x="244" y="130" width="560" height="262" rx="12" fill="#eef5fd" fill-opacity="1.0" stroke="#2a78d6" stroke-width="1.5"/>
+<rect x="254" y="119" width="227" height="22" rx="5" fill="#2a78d6"/>
+<text x="259" y="135.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#fff" text-anchor="start" xml:space="preserve">Coordinator role (per request)</text>
+<rect x="260" y="156" width="528" height="72" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#9fbfe6" stroke-width="1.3"/>
+<text x="270" y="175.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">Native transport  :9042  (CQL protocol v5)</text>
+<text x="270" y="189.9" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.3" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">parses statement, reads its consistency level, picks request path</text>
+<rect x="260" y="238" width="258" height="142" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#9fbfe6" stroke-width="1.3"/>
+<text x="270" y="257.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">Replica selection</text>
+<text x="270" y="271.8" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">token = Murmur3(partition key)</text>
+<text x="270" y="286.6" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">walk ring of 48 vnode tokens</text>
+<text x="270" y="301.4" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">NetworkTopologyStrategy dc1:3</text>
+<text x="270" y="316.1" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">-&gt; replicas {cass1, cass2, cass3}</text>
+<text x="270" y="330.9" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">snitch orders replicas for reads</text>
+<rect x="420" y="242" width="40" height="17" rx="8.5" fill="#e3f4ec" stroke="#14724f"/>
+<text x="440.0" y="254.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="bold" fill="#14724f" text-anchor="middle" xml:space="preserve">Exp 1</text>
+<rect x="530" y="238" width="258" height="142" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#9fbfe6" stroke-width="1.3"/>
+<text x="540" y="257.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">Consistency accounting</text>
+<text x="540" y="271.8" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">write: send to all live replicas,</text>
+<text x="540" y="286.6" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">  reply after W acks (2 s timeout)</text>
+<text x="540" y="301.4" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">read: data + digest requests,</text>
+<text x="540" y="316.1" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">  reply after R answers (5 s timeout)</text>
+<text x="540" y="330.9" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">too few live replicas -&gt; Unavailable</text>
+<rect x="700" y="242" width="64" height="17" rx="8.5" fill="#e3f4ec" stroke="#14724f"/>
+<text x="732.0" y="254.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="bold" fill="#14724f" text-anchor="middle" xml:space="preserve">Exp 2,3,5</text>
+<rect x="244" y="424" width="560" height="530" rx="12" fill="#fff6f0" fill-opacity="1.0" stroke="#eb6834" stroke-width="1.5"/>
+<rect x="254" y="413" width="337" height="22" rx="5" fill="#eb6834"/>
+<text x="259" y="429.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#fff" text-anchor="start" xml:space="preserve">Local replica role: storage engine (LSM tree)</text>
+<text x="258" y="452.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#eb6834" text-anchor="start" xml:space="preserve">write path</text>
+<rect x="258" y="462" width="250" height="92" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#f0b08f" stroke-width="1.3"/>
+<text x="268" y="481.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">1. Commit log</text>
+<text x="268" y="495.8" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">append-only, on disk</text>
+<text x="268" y="510.6" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">replayed after a crash</text>
+<text x="268" y="525.4" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">sync mode: periodic (default)</text>
+<rect x="420" y="466" width="40" height="17" rx="8.5" fill="#e3f4ec" stroke="#14724f"/>
+<text x="440.0" y="478.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="bold" fill="#14724f" text-anchor="middle" xml:space="preserve">trace</text>
+<rect x="540" y="462" width="250" height="92" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#f0b08f" stroke-width="1.3"/>
+<text x="550" y="481.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">2. Memtable</text>
+<text x="550" y="495.8" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">in memory, sorted by key</text>
+<text x="550" y="510.6" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">one per table</text>
+<text x="550" y="525.4" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">write acked after 1 + 2</text>
+<rect x="702" y="466" width="40" height="17" rx="8.5" fill="#e3f4ec" stroke="#14724f"/>
+<text x="722.0" y="478.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="bold" fill="#14724f" text-anchor="middle" xml:space="preserve">trace</text>
+<path d="M508,508 L540,508" fill="none" stroke="#eb6834" stroke-width="2.0" marker-end="url(#a-repl)" stroke-linejoin="round"/>
+<rect x="258" y="600" width="532" height="106" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#f0b08f" stroke-width="1.3"/>
+<text x="268" y="619.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">3. SSTables (immutable, flushed from memtable)</text>
+<text x="268" y="633.8" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">Data, Partition index, Bloom filter, statistics; each cell carries a write timestamp</text>
+<text x="268" y="648.6" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">deletes are tombstones (kept gc_grace_seconds = 10 days by default)</text>
+<text x="268" y="663.4" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">compaction merges SSTables, keeps newest cell, later purges expired tombstones</text>
+<rect x="700" y="604" width="40" height="17" rx="8.5" fill="#e3f4ec" stroke="#14724f"/>
+<text x="720.0" y="616.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="bold" fill="#14724f" text-anchor="middle" xml:space="preserve">trace</text>
+<rect x="612" y="604" width="70" height="17" rx="8.5" fill="#f0f0ee" stroke="#6b6b66"/>
+<text x="647.0" y="616.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="bold" fill="#6b6b66" text-anchor="middle" xml:space="preserve">compaction</text>
+<path d="M665,554 L665,600" fill="none" stroke="#eb6834" stroke-width="2.0" marker-end="url(#a-repl)" stroke-linejoin="round"/>
+<rect x="686" y="570" width="37" height="18" rx="3" fill="#ffffff" fill-opacity="0.92"/>
+<text x="690" y="582.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#eb6834" text-anchor="start" xml:space="preserve">flush</text>
+<text x="258" y="738.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#eb6834" text-anchor="start" xml:space="preserve">read path</text>
+<rect x="258" y="748" width="532" height="92" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#f0b08f" stroke-width="1.3"/>
+<text x="268" y="767.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">Merge memtable + SSTables</text>
+<text x="268" y="781.8" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">Bloom filter skips SSTables that cannot hold the key (seen in our Paxos trace)</text>
+<text x="268" y="796.6" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">cells merged by timestamp: last write wins per cell</text>
+<text x="268" y="811.4" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">returns full data or an MD5 digest, as the coordinator asked</text>
+<rect x="700" y="752" width="40" height="17" rx="8.5" fill="#e3f4ec" stroke="#14724f"/>
+<text x="720.0" y="764.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="bold" fill="#14724f" text-anchor="middle" xml:space="preserve">trace</text>
+<rect x="258" y="856" width="532" height="84" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#d8b4e8" stroke-width="1.3"/>
+<text x="268" y="875.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">Paxos state  (system.paxos table, only for LWT)</text>
+<text x="268" y="889.8" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">per partition: promised ballot, accepted proposal, most recent commit</text>
+<text x="268" y="904.6" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">written through the same commit log + memtable path</text>
+<rect x="700" y="860" width="40" height="17" rx="8.5" fill="#e3f4ec" stroke="#14724f"/>
+<text x="720.0" y="872.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="bold" fill="#14724f" text-anchor="middle" xml:space="preserve">Exp 6</text>
+<rect x="828" y="130" width="422" height="824" rx="12" fill="#f1faf6" fill-opacity="1.0" stroke="#1b9a6c" stroke-width="1.5"/>
+<rect x="838" y="119" width="271" height="22" rx="5" fill="#1b9a6c"/>
+<text x="843" y="135.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#fff" text-anchor="start" xml:space="preserve">Cluster services (run on every node)</text>
+<rect x="842" y="156" width="394" height="66" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#8cc9ad" stroke-width="1.3"/>
+<text x="852" y="175.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">Messaging service  :7000</text>
+<text x="852" y="189.8" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">internode TCP: mutations, reads, digests,</text>
+<text x="852" y="204.6" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">gossip, Paxos, repair messages</text>
+<rect x="1186.0" y="161" width="40" height="17" rx="8.5" fill="#e3f4ec" stroke="#14724f"/>
+<text x="1206.0" y="173.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="bold" fill="#14724f" text-anchor="middle" xml:space="preserve">trace</text>
+<rect x="842" y="234" width="394" height="81" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#8cc9ad" stroke-width="1.3"/>
+<text x="852" y="253.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">Gossiper</text>
+<text x="852" y="267.8" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">every second: exchange versioned endpoint</text>
+<text x="852" y="282.6" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">state (heartbeat, status, schema, tokens)</text>
+<text x="852" y="297.4" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">with a random live peer; seeds aid bootstrap</text>
+<rect x="1162.0" y="239" width="64" height="17" rx="8.5" fill="#e3f4ec" stroke="#14724f"/>
+<text x="1194.0" y="251.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="bold" fill="#14724f" text-anchor="middle" xml:space="preserve">Exp 1,3,5</text>
+<rect x="842" y="327" width="394" height="81" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#8cc9ad" stroke-width="1.3"/>
+<text x="852" y="346.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">Failure detector (phi-accrual)</text>
+<text x="852" y="360.8" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">suspicion phi from heartbeat inter-arrival</text>
+<text x="852" y="375.6" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">convict at phi &gt; 8 -&gt; peer marked DOWN</text>
+<text x="852" y="390.4" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">local opinion, not a cluster vote</text>
+<rect x="1174.0" y="332" width="52" height="17" rx="8.5" fill="#e3f4ec" stroke="#14724f"/>
+<text x="1200.0" y="344.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="bold" fill="#14724f" text-anchor="middle" xml:space="preserve">Exp 3,5</text>
+<rect x="842" y="420" width="394" height="81" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#8cc9ad" stroke-width="1.3"/>
+<text x="852" y="439.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">Hints store  /var/lib/cassandra/hints</text>
+<text x="852" y="453.8" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">coordinator keeps a write for a DOWN replica</text>
+<text x="852" y="468.6" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">replays it when gossip says UP</text>
+<text x="852" y="483.4" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">only within max_hint_window (3 h default)</text>
+<rect x="1180.0" y="425" width="46" height="17" rx="8.5" fill="#e3f4ec" stroke="#14724f"/>
+<text x="1203.0" y="437.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="bold" fill="#14724f" text-anchor="middle" xml:space="preserve">Exp 4a</text>
+<rect x="842" y="513" width="394" height="81" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#8cc9ad" stroke-width="1.3"/>
+<text x="852" y="532.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">Read repair (blocking)</text>
+<text x="852" y="546.8" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">on digest mismatch at QUORUM/ALL: resolve</text>
+<text x="852" y="561.6" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">by timestamp, push newest cells to stale</text>
+<text x="852" y="576.4" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">replicas before replying</text>
+<rect x="1180.0" y="518" width="46" height="17" rx="8.5" fill="#e3f4ec" stroke="#14724f"/>
+<text x="1203.0" y="530.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="bold" fill="#14724f" text-anchor="middle" xml:space="preserve">Exp 4b</text>
+<rect x="842" y="606" width="394" height="81" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#8cc9ad" stroke-width="1.3"/>
+<text x="852" y="625.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">Anti-entropy repair (nodetool repair)</text>
+<text x="852" y="639.8" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">Merkle tree per token range per replica</text>
+<text x="852" y="654.6" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">compare trees, stream only differing ranges</text>
+<text x="852" y="669.4" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">--preview: compare without streaming</text>
+<rect x="1186.0" y="611" width="40" height="17" rx="8.5" fill="#e3f4ec" stroke="#14724f"/>
+<text x="1206.0" y="623.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="bold" fill="#14724f" text-anchor="middle" xml:space="preserve">Exp 4</text>
+<rect x="842" y="699" width="394" height="81" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#8cc9ad" stroke-width="1.3"/>
+<text x="852" y="718.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">Paxos (LWT only, Paxos v1 here)</text>
+<text x="852" y="732.8" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">prepare/promise, read, propose/accept,</text>
+<text x="852" y="747.6" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">commit; quorum of the partition's replicas</text>
+<text x="852" y="762.4" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.2" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">plain reads and writes never use Paxos</text>
+<rect x="1186.0" y="704" width="40" height="17" rx="8.5" fill="#e3f4ec" stroke="#14724f"/>
+<text x="1206.0" y="716.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="bold" fill="#14724f" text-anchor="middle" xml:space="preserve">Exp 6</text>
+<rect x="1310" y="300" width="268" height="150" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#1b9a6c" stroke-width="1.8"/>
+<text x="1320" y="319.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="13.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">cass2  (172.28.0.12)</text>
+<text x="1320" y="334.2" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">same components</text>
+<text x="1320" y="349.4" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">replica for every row (RF 3)</text>
+<text x="1320" y="364.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">can coordinate any request</text>
+<text x="1320" y="379.7" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">gossip peer</text>
+<rect x="1310" y="630" width="268" height="150" rx="7" fill="#ffffff" fill-opacity="1.0" stroke="#1b9a6c" stroke-width="1.8"/>
+<text x="1320" y="649.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="13.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">cass3  (172.28.0.13)</text>
+<text x="1320" y="664.2" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">same components</text>
+<text x="1320" y="679.4" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">replica for every row (RF 3)</text>
+<text x="1320" y="694.5" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">can coordinate any request</text>
+<text x="1320" y="709.7" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#4a4a48" text-anchor="start" xml:space="preserve">gossip peer</text>
+<path d="M194,200 L260,200" fill="none" stroke="#2a78d6" stroke-width="2.0" marker-end="url(#a-cql)" stroke-linejoin="round"/>
+<rect x="214" y="180" width="25" height="18" rx="3" fill="#ffffff" fill-opacity="0.92"/>
+<text x="227" y="192.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="bold" fill="#2a78d6" text-anchor="middle" xml:space="preserve">CQL</text>
+<path d="M804,165 L816,165 L816,110 L1290,110 L1290,340 L1310,340" fill="none" stroke="#eb6834" stroke-width="2.0" marker-end="url(#a-repl)" stroke-linejoin="round"/>
+<rect x="854" y="94" width="392" height="18" rx="3" fill="#ffffff" fill-opacity="0.92"/>
+<text x="1050" y="106.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#eb6834" text-anchor="middle" xml:space="preserve">mutation / read / digest / Paxos messages to the other replicas</text>
+<path d="M1290,340 L1290,680 L1310,680" fill="none" stroke="#eb6834" stroke-width="2.0" marker-end="url(#a-repl)" stroke-linejoin="round"/>
+<path d="M1236,250 L1270,250 L1270,400 L1310,400" fill="none" stroke="#1b9a6c" stroke-width="2.0" stroke-dasharray="7 5" marker-start="url(#a-gossip)" marker-end="url(#a-gossip)" stroke-linejoin="round"/>
+<path d="M1270,400 L1270,730 L1310,730" fill="none" stroke="#1b9a6c" stroke-width="2.0" stroke-dasharray="7 5" marker-start="url(#a-gossip)" marker-end="url(#a-gossip)" stroke-linejoin="round"/>
+<text x="1386" y="482.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="bold" fill="#1b9a6c" text-anchor="middle" xml:space="preserve">gossip + FD</text>
+<text x="1386" y="498.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#1b9a6c" text-anchor="middle" xml:space="preserve">heartbeats both ways</text>
+<path d="M788,330 L812,330 L812,500 L792,500" fill="none" stroke="#eb6834" stroke-width="2.0" marker-end="url(#a-repl)" stroke-linejoin="round"/>
+<text x="816" y="412.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="bold" fill="#eb6834" text-anchor="start" xml:space="preserve">local</text>
+<text x="816" y="425.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="10.5" font-weight="bold" fill="#eb6834" text-anchor="start" xml:space="preserve">write</text>
+<rect x="1300" y="812" width="286" height="144" rx="8" fill="#ffffff" fill-opacity="1.0" stroke="#c9c9c3" stroke-width="1.2"/>
+<text x="1312" y="832.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#1b1b1b" text-anchor="start" xml:space="preserve">Legend</text>
+<rect x="1312.0" y="840" width="34" height="14" rx="3" fill="#e3f4ec" stroke="#14724f" stroke-width="1.3"/>
+<text x="1356.0" y="851.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#1b1b1b" text-anchor="start" xml:space="preserve">V: exercised and observed in our runs</text>
+<rect x="1312.0" y="862" width="34" height="14" rx="3" fill="#f0f0ee" stroke="#6b6b66" stroke-width="1.3"/>
+<text x="1356.0" y="873.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#1b1b1b" text-anchor="start" xml:space="preserve">D: documented, not measured by us</text>
+<path d="M1312.0,891 L1346.0,891" stroke="#2a78d6" stroke-width="2.2" marker-end="url(#a-cql)"/>
+<text x="1356.0" y="895.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#1b1b1b" text-anchor="start" xml:space="preserve">client request</text>
+<path d="M1312.0,913 L1346.0,913" stroke="#eb6834" stroke-width="2.2" marker-end="url(#a-repl)"/>
+<text x="1356.0" y="917.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#1b1b1b" text-anchor="start" xml:space="preserve">replica data traffic</text>
+<path d="M1312.0,935 L1346.0,935" stroke="#1b9a6c" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#a-gossip)"/>
+<text x="1356.0" y="939.0" font-family="Arial, 'Liberation Sans', Helvetica, sans-serif" font-size="11.5" font-weight="normal" fill="#1b1b1b" text-anchor="start" xml:space="preserve">gossip / failure detection</text></svg>
